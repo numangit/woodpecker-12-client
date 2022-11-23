@@ -6,7 +6,8 @@ const Banner = () => {
             <div className="hero-overlay bg-opacity-5"></div>
             <div className="hero-content ml-auto mr-8 text-center text-gray-900">
                 <div className="max-w-md">
-                    <h1 className="ml-auto text-5xl lg:text-6xl font-SemiBold">The Brighten Up Interior Collection</h1>
+                    <h1 className="my-1 text-5xl font-serif lg:text-6xl font-bold">Woodpecker</h1>
+                    <p className="ml-auto text-2xl lg:text-3xl font-thin">The Best Quality Used Furniture</p>
                 </div>
             </div>
         </div>

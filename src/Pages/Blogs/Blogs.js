@@ -5,7 +5,7 @@ const Blogs = () => {
         <div className="lg:py-10 py-14 px-2">
             <h2 className=" text-center font-bold text-3xl my-3 lg:my-5">Frequently Asked Questions</h2>
             <div className="lg:py-10 py- lg:my-4 my-2 h-auto">
-                <div className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box mx-auto lg:w-1/2 my-2">
+                <div className="collapse collapse-plus border border-base-300 bg-[#e6e6e6] rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-xl font-medium">
                         What are the different ways to manage a state in a React application?
@@ -33,7 +33,7 @@ const Blogs = () => {
                         </div>
                     </div>
                 </div>
-                <div className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box mx-auto lg:w-1/2 my-2">
+                <div className="collapse collapse-plus border border-base-300  bg-[#e6e6e6] rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-xl font-medium">
                         How does prototypical inheritance work?
@@ -42,7 +42,7 @@ const Blogs = () => {
                         <span className='font-semibold'>Prototypical inheritance</span> allows us to reuse the properties or methods from one JavaScript object to another through a reference pointer function. All JavaScript objects inherit properties and methods from a prototype: Date objects inherit from Date.
                     </div>
                 </div>
-                <div className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box mx-auto lg:w-1/2 my-2">
+                <div className="collapse collapse-plus border border-base-300  bg-[#e6e6e6] rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-xl font-medium">
                         What is a unit test? Why should we write unit tests?
@@ -51,7 +51,7 @@ const Blogs = () => {
                         A <span className='font-semibold'>unit test</span> is a way of testing a unit - the smallest piece of code that can be logically isolated in a system. In most programming languages, that is a function, a subroutine, a method or property. The isolated part of the definition is important.Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages.
                     </div>
                 </div>
-                <div className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box mx-auto lg:w-1/2 my-2">
+                <div className="collapse collapse-plus border border-base-300  bg-[#e6e6e6] rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-xl font-medium">
                         React vs. Angular vs. Vue?

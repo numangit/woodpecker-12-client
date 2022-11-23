@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../../assets/icons8-wood-64.png'
 
 const Navbar = () => {
 
@@ -24,9 +25,9 @@ const Navbar = () => {
     </>
 
     return (
-        <div className='sticky top-0 z-50'>
+        <div data-theme="night" className='sticky top-0 z-50'>
             {/* change nav color when scrolling conditional className */}
-            <div className="navbar bg-accent text-accent-content flex justify-between py-0 my-0">
+            <div className="navbar flex justify-between py-0 my-0">
                 <div className="navbar-start">
                     {/* small screen */}
                     <div className="dropdown">
@@ -37,7 +38,10 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <Link to="/" className="btn btn-ghost normal-case text-xl">Woodpecker</Link>
+                    <Link to="/" className="btn btn-ghost normal-case text-xl">
+                        <img className="w-10 mr-1" src={logo} alt="" />
+                        Woodpecker
+                    </Link>
                 </div>
                 {/* large screen screen */}
                 <div className="navbar-center hidden lg:flex">
