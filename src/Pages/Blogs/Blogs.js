@@ -2,8 +2,8 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div className="lg:py-10 py-20 px-2">
-            <h2 className=" text-center font-bold text-3xl mb-2 lg:my-5">Frequently Asked Questions</h2>
+        <div className="lg:py-10 py-14 px-2">
+            <h2 className=" text-center font-bold text-3xl my-3 lg:my-5">Frequently Asked Questions</h2>
             <div className="lg:py-10 py- lg:my-4 my-2 h-auto">
                 <div className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
