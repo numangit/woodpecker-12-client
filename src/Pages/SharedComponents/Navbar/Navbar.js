@@ -26,7 +26,7 @@ const Navbar = () => {
     return (
         <div className='sticky top-0 z-50'>
             {/* change nav color when scrolling conditional className */}
-            <div className="navbar bg-primary text-primary-content flex justify-between py-0 my-0">
+            <div className="navbar bg-accent text-accent-content flex justify-between py-0 my-0">
                 <div className="navbar-start">
                     {/* small screen */}
                     <div className="dropdown">
