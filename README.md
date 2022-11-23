@@ -1,4 +1,4 @@
-# Snap Repository
+# Woodpecker Repository
 Woodpecker is a full-stack website using React, firebase, react router, node, express, mongodb.
 
 ## Project description
