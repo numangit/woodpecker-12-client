@@ -65,7 +65,7 @@ const Login = () => {
                 <p className='text-center text-slate-400'>welcome back!</p>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div>
-                        {loginError && <p className='text-red-600'>{loginError.slice(22, -2)}</p>}
+                        {loginError && <p className='text-red-600 text-center text-sm'>{loginError.slice(22, -2)} <span className='text-slate-500'>Please Try again!</span></p>}
                     </div>
                     <div className="form-control w-full ">
                         <label className="label"><span className="">Email :</span></label>
@@ -98,7 +98,7 @@ const Login = () => {
 
                         {errors.password && <p className="text-red-500 text-sm" role="alert">{errors.password?.message}</p>}
                     </div>
-                    <input className='btn btn-accent w-full my-1' value="Login" type="submit" />
+                    <input className='btn btn-accent w-full mt-3' value="Login" type="submit" />
                 </form >
                 <p className="text-sm my-1">Don't have an account? <Link className="underline" to="/register">Create new account</Link></p>
                 <div className="divider">OR</div>
