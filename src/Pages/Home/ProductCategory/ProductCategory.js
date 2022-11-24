@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const categories = [
     {
@@ -34,11 +35,13 @@ const ProductCategory = () => {
             <div className='p-5 lg:p-10 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-6'>
                 {
                     categories?.map(category =>
-                        <div key={category._id} className="p-3 rounded-lg bg-white shadow-md">
-                            <img src={category.imgUrl} alt="" />
-                            <div className="divider my-0 py-0"></div>
-                            <p className='text-xl font-semibold text-center'>{category.categoryName}</p>
-                        </div>
+                        <Link key={category._id} to={`/category/${category.categoryName}`} >
+                            <div className="p-3 rounded-lg bg-white shadow-md">
+                                <img src={category.imgUrl} alt="" />
+                                <div className="divider my-0 py-0"></div>
+                                <p className='text-xl font-semibold text-center'>{category.categoryName}</p>
+                            </div>
+                        </Link>
                     )
                 }
             </div>
