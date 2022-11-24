@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
@@ -12,6 +12,11 @@ const Login = () => {
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
+
+    //scroll at the top after page is rendered
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     //show and hide password
     const [passwordShown, setPasswordShown] = useState(false);

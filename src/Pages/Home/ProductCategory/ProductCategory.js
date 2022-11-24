@@ -1,31 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const categories = [
-    {
-        _id: 1,
-        categoryName: "Chairs",
-        imgUrl: "https://images.prismic.io/aptdeco/ea2e1a6b-12dc-445a-9e75-124d7adfa933_dining_room%402x_SM.jpg?auto=compress,format&rect=10,0,900,900&w=450&h=450"
-
-    },
-    {
-        _id: 2,
-        categoryName: "Tables",
-        imgUrl: "https://images.prismic.io/aptdeco/bf02d67d-93c9-4b6d-b31a-cb10c1e28e2b_50_off%402x_SM.jpg?auto=compress,format&rect=0,0,900,900&w=450&h=450"
-    },
-    {
-        _id: 3,
-        categoryName: "Storages",
-        imgUrl: "https://images.prismic.io/aptdeco/b9e2367f-d8c6-4daa-88b7-47d4dfd23b31_bedroom%402x_SM.jpg?auto=compress,format&rect=0,0,900,900&w=450&h=450"
-    },
-    {
-        _id: 4,
-        categoryName: "Sofas",
-        imgUrl: "https://images.prismic.io/aptdeco/f93846f3-cf29-40f6-8e8f-5bd4e0ea13cc_living_room%402x_SM.jpg?auto=compress,format&rect=0,0,900,900&w=450&h=450"
-    }
-]
+import Loader from '../../../components/Loader/Loader';
 
 const ProductCategory = () => {
+    // getting product categories from api
+    const { data: productCategories = [], isLoading } = useQuery({
+        queryKey: ['productCategories'],
+        queryFn: async () => {
+            const res = await fetch("http://localhost:5000/productCategories");
+            const data = await res.json();
+            return data;
+        }
+    });
+
+    //loader
+    if (isLoading) {
+        return <Loader></Loader>
+    }
+
     return (
         <div className="lg:py-10 py-4 bg-fixed bg-cover" style={{ backgroundImage: `url("https://t3.ftcdn.net/jpg/04/09/81/22/360_F_409812204_DB79pC30Mid4zQgUwEFOMbniRhzUUk2X.jpg")` }}>
             <div className=''>
@@ -34,7 +27,7 @@ const ProductCategory = () => {
             </div>
             <div className='p-5 lg:p-10 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-6'>
                 {
-                    categories?.map(category =>
+                    productCategories?.map(category =>
                         <Link key={category._id} to={`/category/${category.categoryName}`} >
                             <div className="p-3 rounded-lg bg-white shadow-md hover:-mt-2 duration-300 m-1">
                                 <img className="" src={category.imgUrl} alt="" />
