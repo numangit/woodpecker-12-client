@@ -37,7 +37,12 @@ const Login = () => {
                         {errors.email && <p className="text-red-500 text-sm" role="alert">{errors.email?.message}</p>}
                     </div>
                     <div className="form-control w-full">
-                        <label className="label"><span className="label-text">Password :</span></label>
+                        <label className="label">
+                            <span className="label-text">Password :</span>
+                            <label htmlFor="my-modal-4" className="label my-0 py-0">
+                                <span className="label-text ">Forgot Password?</span>
+                            </label>
+                        </label>
                         <div className='relative'>
                             <input {...register("password",
                                 {
@@ -56,9 +61,8 @@ const Login = () => {
                         </div>
 
                         {errors.password && <p className="text-red-500 text-sm" role="alert">{errors.password?.message}</p>}
-                        <label htmlFor="my-modal-4" className="label my-1"><span className="label-text ">Forgot Password?</span></label>
                     </div>
-                    <input className='btn btn-accent w-full' value="Login" type="submit" />
+                    <input className='btn btn-accent w-full my-1' value="Login" type="submit" />
                 </form >
                 <p className="text-sm my-1">Don't have an account? <Link className="underline" to="/register">Create new account</Link></p>
                 <div className="divider">OR</div>
