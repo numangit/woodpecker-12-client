@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, googleSignIn, setLoading, updateUser } = useContext(AuthContext);
-    const [signUpError, setSignUPError] = useState('')
+    const [registerError, setRegisterError] = useState('')
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     //show and hide password
     const [passwordShown, setPasswordShown] = useState(false);
@@ -18,7 +22,7 @@ const SignUp = () => {
     //handler to handle signup function
     const handleSignUp = data => {
         console.log(data)
-        setSignUPError('');
+        setRegisterError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -29,15 +33,16 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         console.log('Profile Updated');
-                        setLoading(false);
+                        navigate(from, { replace: true });
                     })
                     .catch(error => {
                         console.log(error)
                     });
+                setLoading(false);//this might caught problem (keep in mind)
             })
             .catch(error => {
                 console.log(error)
-                setSignUPError(error.message)
+                setRegisterError(error.message)
             });
     }
 
@@ -47,6 +52,7 @@ const SignUp = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
                 setLoading(false);
             }).catch((error) => {
                 console.log(error.message);
@@ -61,7 +67,7 @@ const SignUp = () => {
             <p className='text-center text-slate-400'>Join us!</p>
             <form onSubmit={handleSubmit(handleSignUp)}>
                 <div>
-                    {signUpError && <p className='text-red-600'>{signUpError.slice(22, -2)}</p>}
+                    {registerError && <p className='text-red-600'>{registerError.slice(22, -2)}</p>}
                 </div>
                 <div className="form-control w-full ">
                     <label className="label"><span className="">Name :</span></label>
