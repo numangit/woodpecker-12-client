@@ -13,7 +13,12 @@ const Navbar = () => {
         <>
             <li><Link to="/dashboard">Dashboard</Link></li>
             <div className="h-auto m-0 p-0 bg-zinc-700 w-[1px]"></div>
-            <li><button >Sign Out</button></li>
+            <li><button >Log Out</button></li>
+            <div className="avatar p-2">
+                <div className="w-12 rounded-full">
+                    <img src="https://placeimg.com/80/80/people" alt='' />
+                </div>
+            </div>
         </>
         {/* :  */}
         <>
