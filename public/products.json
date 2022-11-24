@@ -20,6 +20,7 @@
         "productCategory_id": "select chairs sofas but the value will be the _id",
         "onStockOPTIONAL": true,
         "PaidOPTIONAL": true,
-        "repoertedOPTIONAL": true
+        "repoertedOPTIONAL": false,
+        "advertisedOPTIONAL": true
     }
 ]

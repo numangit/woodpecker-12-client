@@ -31,6 +31,6 @@ Lottie Animation -> [LottieFiles](https://lottiefiles.com/featured)
 
 ## Admin 
 
-adminEmail: 
+adminEmail: admin@user.com
 
-adminPassword: 
+adminPassword: 123123

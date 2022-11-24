@@ -38,12 +38,13 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         console.log('Profile Updated');
+                        saveUser(data.name, data.email, data.role);
                         navigate(from, { replace: true });
                     })
                     .catch(error => {
                         console.log(error)
                     });
-                setLoading(false);//this might caught problem (keep in mind)
+                // setLoading(false);//this might caught problem (keep in mind)
             })
             .catch(error => {
                 console.log(error)
@@ -57,11 +58,28 @@ const SignUp = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                saveUser(user.displayName, user.email);
                 navigate(from, { replace: true });
                 setLoading(false);
             }).catch((error) => {
                 console.log(error.message);
             });
+    }
+
+    //add user to database
+    const saveUser = (name, email, role = "buyer") => {
+        const user = { name, email, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     }
 
     //REMINDER: you will need to install react hook form to use this kind of form.
@@ -88,8 +106,6 @@ const SignUp = () => {
                     <select {...register("role")} className="select select-bordered w-full max-w-xs">
                         <option value="buyer">buyer</option>
                         <option value="seller">seller</option>
-                        {/* temporary */}
-                        <option value="admin">admin</option>
                     </select>
                 </div>
                 <div className="form-control w-full ">
