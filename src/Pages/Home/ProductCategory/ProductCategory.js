@@ -36,6 +36,7 @@ const ProductCategory = () => {
                     categories?.map(category =>
                         <div key={category._id} className="p-3 rounded-lg bg-white shadow-md">
                             <img src={category.imgUrl} alt="" />
+                            <div className="divider my-0 py-0"></div>
                             <p className='text-xl font-semibold text-center'>{category.categoryName}</p>
                         </div>
                     )
