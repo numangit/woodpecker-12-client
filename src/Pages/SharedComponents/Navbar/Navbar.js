@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/icons8-bird-64.png'
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import { BiUser } from 'react-icons/bi';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -22,12 +23,16 @@ const Navbar = () => {
                 <>
                     <li><Link to="/dashboard">Dashboard</Link></li>
                     <div className="h-auto m-0 p-0 bg-zinc-700 w-[1px]"></div>
-                    <li><button onClick={handleLogOut}>Log Out</button></li>
-                    <div className="avatar p-2">
-                        <div className="w-12 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" alt='' />
-                        </div>
-                    </div>
+                    {
+                        user?.photoURL ?
+                            <div className="avatar p-2 mx-2">
+                                <div className="w-8 rounded-full">
+                                    <img className="" src={user?.photoURL} title={user?.displayName} alt="" />
+                                </div>
+                            </div>
+                            : <BiUser className="text-3xl my-auto mx-2" title={user?.displayName} />
+                    }
+                    <li><button className='p-0' onClick={handleLogOut}>Log out</button></li>
                 </>
                 :
                 <>
@@ -59,7 +64,7 @@ const Navbar = () => {
                 </div>
                 {/* large screen screen */}
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0">
+                    <ul className="menu menu-horizontal mr-3 p-0">
                         {menuItems}
                     </ul>
                 </div>

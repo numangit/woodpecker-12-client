@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [loginError, setLoginError] = useState('');
-
+    const { signIn, googleSignIn, setLoading, passwordReset } = useContext(AuthContext);
 
     //show and hide password
     const [passwordShown, setPasswordShown] = useState(false);
@@ -14,10 +15,45 @@ const Login = () => {
         setPasswordShown(!passwordShown);
     };
 
-    //form submit function
+    //form submit function to handle email login
     const handleLogin = data => {
         console.log(data)
         setLoginError('');
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.log(error.message)
+                setLoginError(error.message);
+            });
+    }
+
+    //handler function to reset pasword
+    const handlePasswordReset = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        passwordReset(email)
+            .then(() => {
+                console.log('email sent');
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
+
+    //handle Google Signin
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                setLoading(false);
+            }).catch((error) => {
+                console.log(error.message);
+            });
     }
 
     //REMINDER: you will need to install react hook form to use this kind of form.
@@ -66,8 +102,7 @@ const Login = () => {
                 </form >
                 <p className="text-sm my-1">Don't have an account? <Link className="underline" to="/register">Create new account</Link></p>
                 <div className="divider">OR</div>
-                {/* <button onClick={handleGoogleSignIn} className="btn btn-outline w-full dark:text-white">CONTINUE WITH GOOGLE</button> */}
-                <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
 
                 {/* modal */}
                 {/* <input type="checkbox" id="my-modal-3" className="modal-toggle" />
@@ -88,8 +123,7 @@ const Login = () => {
                     <label className="modal-box relative" htmlFor="">
                         <h3 className="font-bold text-lg my-1">Reset your password</h3>
                         <p>Enter the email address associated with your account and we'll send you a link to reset your password.</p>
-                        {/* <form className="my-2" onSubmit={handlePasswordReset} > */}
-                        <form className="my-2">
+                        <form className="my-2" onSubmit={handlePasswordReset} >
                             <div className="form-control w-full">
                                 <input name="email" type="email" className="input input-bordered w-full my-2" placeholder='Your email' />
                             </div>

@@ -6,7 +6,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser, googleSignIn, setLoading } = useContext(AuthContext);
+    const { createUser, googleSignIn, setLoading, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
 
     //show and hide password
@@ -23,7 +23,17 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setLoading(false);
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        console.log('Profile Updated');
+                        setLoading(false);
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
             })
             .catch(error => {
                 console.log(error)
