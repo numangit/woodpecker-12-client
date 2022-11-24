@@ -27,7 +27,7 @@ const SignUp = () => {
     //stop and restart the react app if the error handling does'nt work.
     return (
         <div className="shadow-md p-10 lg:mx-auto w-full lg:w-96 rounded-xl my-5 lg:my-24 border text-dark">
-            <h2 className="text-xl text-center font-bold my-3">SignUp</h2>
+            <h2 className="text-xl text-center font-bold my-3">Register</h2>
             <form onSubmit={handleSubmit(handleSignUp)}>
                 <div>
                     {signUpError && <p className='text-red-600'>{signUpError.slice(22, -2)}</p>}
@@ -40,6 +40,15 @@ const SignUp = () => {
                         })}
                         type="text" className="input input-bordered w-full " />
                     {errors.name && <p className="text-red-500 text-sm" role="alert">{errors.name?.message}</p>}
+                </div>
+                <div >
+                    <label className="label"><span className="">Role :</span></label>
+                    <select {...register("role")} className="select select-bordered w-full max-w-xs">
+                        <option value="buyer">buyer</option>
+                        <option value="seller">seller</option>
+                        {/* temporary */}
+                        <option value="admin">admin</option>
+                    </select>
                 </div>
                 <div className="form-control w-full ">
                     <label className="label"><span className="">Email :</span></label>
@@ -72,7 +81,7 @@ const SignUp = () => {
                     </div>
                     {errors.password && <p className="text-red-500 text-sm" role="alert">{errors.password?.message}</p>}
                 </div>
-                <input className='btn btn-accent w-full mt-3' value="SignUp" type="submit" />
+                <input className='btn btn-accent w-full mt-3' value="Register" type="submit" />
             </form>
             <p className="text-sm my-1">Already have an account? <Link className="underline" to="/login">Login</Link></p>
             <div className="divider">OR</div>
