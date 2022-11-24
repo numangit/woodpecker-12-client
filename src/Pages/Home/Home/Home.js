@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from '../../../components/Loader/Loader';
 import AboutUs from '../AboutUs/AboutUs';
 import AdvertiseSection from '../AdvertiseSection/AdvertiseSection';
 import Banner from '../Banner/Banner';
@@ -8,6 +9,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <Loader></Loader>
             <ProductCategory></ProductCategory>
             <AdvertiseSection></AdvertiseSection>
             <AboutUs></AboutUs>
