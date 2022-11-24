@@ -25,14 +25,14 @@ const Navbar = () => {
                     <div className="h-auto m-0 p-0 bg-zinc-700 w-[1px]"></div>
                     {
                         user?.photoURL ?
-                            <div className="avatar p-2 mx-2">
+                            <div className="avatar p-2 mx-2 hidden lg:block">
                                 <div className="w-8 rounded-full">
                                     <img className="" src={user?.photoURL} title={user?.displayName} alt="" />
                                 </div>
                             </div>
-                            : <BiUser className="text-3xl my-auto mx-2" title={user?.displayName} />
+                            : <BiUser className="text-3xl my-auto mx-2 hidden lg:block" title={user?.displayName} />
                     }
-                    <li><button className='p-0' onClick={handleLogOut}>Log out</button></li>
+                    <li><button className='lg:p-0' onClick={handleLogOut}>Log out</button></li>
                 </>
                 :
                 <>
@@ -43,8 +43,9 @@ const Navbar = () => {
         }
     </>
 
+    // bg-primary/50 backdrop-blur
     return (
-        <div data-theme="night" className='sticky top-0 z-50'>
+        <div data-theme="" className='sticky top-0 z-50 bg-primary text-white '>
             {/* change nav color when scrolling conditional className */}
             <div className="navbar flex justify-between py-0 my-0">
                 <div className="navbar-start">
@@ -53,7 +54,7 @@ const Navbar = () => {
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary text-white rounded-box w-52">
                             {menuItems}
                         </ul>
                     </div>
