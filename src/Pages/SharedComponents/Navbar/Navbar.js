@@ -1,32 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/icons8-bird-64.png'
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    //function to handle logout
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err));
+    }
 
     //Nav links
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/blogs">Blogs</Link></li>
-        {/* {
-            user?.uid ? */}
-        <>
-            <li><Link to="/dashboard">Dashboard</Link></li>
-            <div className="h-auto m-0 p-0 bg-zinc-700 w-[1px]"></div>
-            <li><button >Log Out</button></li>
-            <div className="avatar p-2">
-                <div className="w-12 rounded-full">
-                    <img src="https://placeimg.com/80/80/people" alt='' />
-                </div>
-            </div>
-        </>
-        {/* :  */}
-        <>
-            {/* <div className="h-auto m-0 p-0 bg-slate-700 w-[1px]"></div> */}
-            <li><Link to="/register">Register</Link></li>
-            <li><Link to="/login">Login</Link></li>
-        </>
-        {/* } */}
+        {
+            user?.uid ?
+                <>
+                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <div className="h-auto m-0 p-0 bg-zinc-700 w-[1px]"></div>
+                    <li><button onClick={handleLogOut}>Log Out</button></li>
+                    <div className="avatar p-2">
+                        <div className="w-12 rounded-full">
+                            <img src="https://placeimg.com/80/80/people" alt='' />
+                        </div>
+                    </div>
+                </>
+                :
+                <>
+                    {/* <div className="h-auto m-0 p-0 bg-slate-700 w-[1px]"></div> */}
+                    <li><Link to="/register">Register</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                </>
+        }
     </>
 
     return (
