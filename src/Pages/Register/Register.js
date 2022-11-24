@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
-
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { createUser, googleSignIn, setLoading } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
 
     //show and hide password
@@ -14,13 +15,32 @@ const SignUp = () => {
         setPasswordShown(!passwordShown);
     };
 
+    //handler to handle signup function
     const handleSignUp = data => {
         console.log(data)
         setSignUPError('');
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.log(error)
+                setSignUPError(error.message)
+            });
     }
 
+    //handle Google Signin
     const handleGoogleSignIn = () => {
-
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                setLoading(false);
+            }).catch((error) => {
+                console.log(error.message);
+            });
     }
 
     //REMINDER: you will need to install react hook form to use this kind of form.
