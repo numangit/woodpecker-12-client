@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -47,6 +48,7 @@ const Login = () => {
         passwordReset(email)
             .then(() => {
                 console.log('email sent');
+                toast.success('Please Check your email')
             })
             .catch((error) => {
                 const errorMessage = error.message;
