@@ -26,8 +26,9 @@ const SignUp = () => {
     //REMINDER: you will need to install react hook form to use this kind of form.
     //stop and restart the react app if the error handling does'nt work.
     return (
-        <div className="shadow-md p-10 lg:mx-auto w-full lg:w-96 rounded-xl my-5 lg:my-24 border text-dark">
-            <h2 className="text-xl text-center font-bold my-3">Register</h2>
+        <div className="shadow-lg p-10 lg:mx-auto w-full lg:w-96 rounded-xl my-5 lg:my-24 border text-dark">
+            <h2 className="text-3xl text-center font-semibold my-3">Register</h2>
+            <p className='text-center text-slate-400'>Join us!</p>
             <form onSubmit={handleSubmit(handleSignUp)}>
                 <div>
                     {signUpError && <p className='text-red-600'>{signUpError.slice(22, -2)}</p>}
