@@ -28,7 +28,7 @@ const ProductCategory = () => {
             <div className='p-5 lg:p-10 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-6'>
                 {
                     productCategories?.map(category =>
-                        <Link key={category._id} to={`/category/${category.categoryName}`} >
+                        <Link key={category._id} to={`/category/${category._id}`} >
                             <div className="p-3 rounded-lg bg-white shadow-md hover:-mt-2 duration-300 m-1">
                                 <img className="" src={category.imgUrl} alt="" />
                                 <div className="hidden lg:block divider my-0 py-0"></div>
