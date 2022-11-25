@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcInfo } from 'react-icons/fc';
 import { IoMdImages } from 'react-icons/io';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../../../components/Loader/Loader';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const AddAProduct = () => {
+    const { user } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [formError, setFormError] = useState('')
 
@@ -40,6 +42,38 @@ const AddAProduct = () => {
                 //sending the data from form to end point to save the data in data base
                 if (imgData.success) {
                     console.log(imgData.data.url);
+                    const productDetails = {
+                        productImage: imgData.data.url,
+                        productName: data.productName,
+                        originalPrice: data.originalPrice,
+                        resalePrice: data.resalePrice,
+                        yearsOfPurchase: data.yearsOfPurchase,
+                        yearsOfUse: data.yearsOfUse,
+                        productCategory: data.productCategory,
+                        productCondition: data.productCondition,
+                        productDescription: data.productDescription,
+                        sellerName: user.displayName,
+                        sellerEmail: user.email,
+                        sellerLocation: data.sellerLocation,
+                        sellerPhone: data.sellerPhone,
+                        onStock: true,
+                        paid: false,
+                        postedDate: new Date()
+                    }
+                    console.log(productDetails);
+
+                    // save products information to the database
+                    fetch('http://localhost:5000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(productDetails)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            console.log(result);
+                        })
                 }
             })
 
@@ -63,11 +97,16 @@ const AddAProduct = () => {
                 </div>
                 {/* seller info  */}
                 <h2 className='text-start font-bold text-sm'>Seller info</h2>
-                <div className="grid grid-cols-3 gap-2 my-3">
+                <div className="grid grid-cols-2 gap-5 my-3">
+                    {/* <div>
+                        <input {...register("sellerName", { required: "Location is required" })}
+                            type="text" className="input input-bordered input-sm w-full focus:border-none" placeholder="Seller Name*" />
+                        {errors.sellerName && <p className="text-red-500 text-xs" role="alert">{errors.sellerName?.message}</p>}
+                    </div>
                     <div>
                         <input {...register("sellerEmail", { required: "Email Address is required" })} type="email" className="input input-bordered input-sm w-full focus:border-none" placeholder="Seller email*" />
                         {errors.sellerEmail && <p className="text-red-500 text-xs" role="alert">{errors.sellerEmail?.message}</p>}
-                    </div>
+                    </div> */}
                     <div>
                         <input {...register("sellerPhone", { required: "Mobile number is required" })}
                             type="number" className="input input-bordered input-sm w-full focus:border-none" placeholder="Seller mobile number*" />
