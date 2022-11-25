@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcInfo } from 'react-icons/fc';
+import { IoMdImages } from 'react-icons/io';
 import { useQuery } from '@tanstack/react-query';
 
 const AddAProduct = () => {
@@ -54,6 +55,7 @@ const AddAProduct = () => {
                     </div>
                     {/* product info */}
                     <h2 className='text-start font-bold text-sm'>Product </h2>
+                    {/* name and image  */}
                     <div className="grid grid-cols-2 gap-5 my-3">
                         <div className="form-control w-full flex flex-wrap">
                             <div>
@@ -62,7 +64,20 @@ const AddAProduct = () => {
                             </div>
                             {errors.productName && <p className="text-red-500 text-xs" role="alert">{errors.productName?.message}</p>}
                         </div>
+                        <div>
+                            <label className="w-full shadow-sm mx-auto flex items-center p-1 bg-white text-black rounded tracking-wide border cursor-pointer">
+                                <div className='mx-auto flex items-center'>
+                                    <IoMdImages className='mx-2' />
+                                    <span className="text-xs font-bold">Product image</span>
+                                </div>
+                                <input type="file"
+                                    {...register("productImage", { required: "Photo is Required" })}
+                                    className="hidden" />
+                            </label>
+                            {errors.productImage && <p className='text-red-500 text-xs'>{errors.productImage.message}</p>}
+                        </div>
                     </div>
+                    {/* price and uses  */}
                     <div className="grid grid-cols-4 gap-2 my-3">
                         <div>
                             <input {...register("originalPrice", { required: "Original price is required" })} type="number" className="input input-bordered input-sm w-full focus:border-none" placeholder="Original price*" />
@@ -88,7 +103,7 @@ const AddAProduct = () => {
                     <div className="grid grid-cols-2 gap-5 my-3" >
                         <div className='flex items-center'>
                             <label className="label"><span className="label-text font-semibold text-xs "> Category: </span></label>
-                            <select {...register("productCategory")} className="select select-sm rounded select-bordered w-3/4 focus:border-none mx-auto">
+                            <select {...register("productCategory")} className="select select-sm rounded select-bordered w-4/5 focus:border-none mx-auto">
                                 {
                                     productCategories?.map(category =>
                                         <option
@@ -101,7 +116,7 @@ const AddAProduct = () => {
                         </div>
                         <div className='flex items-center'>
                             <label className="label"><span className="label-text font-semibold text-xs "> Condition : </span></label>
-                            <select {...register("productCondition")} className="select select-sm rounded select-bordered w-3/4 focus:border-none mx-auto">
+                            <select {...register("productCondition")} className="select select-sm rounded select-bordered w-4/5 focus:border-none mx-auto">
                                 <option value="Excellent">Excellent</option>
                                 <option value="Good">Good</option>
                                 <option value="Fair">Fair</option>
