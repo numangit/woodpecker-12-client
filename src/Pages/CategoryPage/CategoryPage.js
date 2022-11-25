@@ -13,6 +13,7 @@ const CategoryPage = () => {
     const products = useLoaderData();
     const navigation = useNavigation();
 
+    //api to get user data by email
     const { data: userData = [] } = useQuery({
         queryKey: ['userData'],
         queryFn: async () => {
