@@ -1,7 +1,8 @@
 import React from 'react';
-
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import Loader from '../../../src/components/Loader/Loader';
+import { MdLocationOn } from 'react-icons/md';
+import { BiTime } from 'react-icons/bi';
 
 const CategoryPage = () => {
     const products = useLoaderData();
@@ -20,6 +21,13 @@ const CategoryPage = () => {
                             <div className="card-body ">
                                 <h2 className="card-title text-lg">{product.productName}</h2>
                                 <p className='text-sm'>{product.productDescription.slice(0, 60)}..</p>
+                                <p className='text-xs line-through'>$ {product.originalPrice}</p>
+                                <p className='text-xs'>Price: ${product.resalePrice}&nbsp;
+                                    <span className='text-xs line-through text-slate-700'>${product.originalPrice}</span>
+                                </p>
+                                <p className='text-xs'>Used: {product.yearsOfUse} year{product.yearsOfUse > 1 && "s"}</p>
+                                <p className='text-xs flex items-center'><MdLocationOn /> {product.sellerLocation}</p>
+                                <p className='text-xs flex items-center'><BiTime /> {product.postedDate.slice(0, -14)}</p>
                                 <div className="card-actions justify-end">
                                     <button className="btn btn-sm btn-primary rounded-md">Buy Now</button>
                                 </div>

@@ -102,15 +102,6 @@ const AddAProduct = () => {
                 {/* seller info  */}
                 <h2 className='text-start font-bold text-sm'>Seller info</h2>
                 <div className="grid grid-cols-2 gap-5 my-3">
-                    {/* <div>
-                        <input {...register("sellerName", { required: "Location is required" })}
-                            type="text" className="input input-bordered input-sm w-full focus:border-none" placeholder="Seller Name*" />
-                        {errors.sellerName && <p className="text-red-500 text-xs" role="alert">{errors.sellerName?.message}</p>}
-                    </div>
-                    <div>
-                        <input {...register("sellerEmail", { required: "Email Address is required" })} type="email" className="input input-bordered input-sm w-full focus:border-none" placeholder="Seller email*" />
-                        {errors.sellerEmail && <p className="text-red-500 text-xs" role="alert">{errors.sellerEmail?.message}</p>}
-                    </div> */}
                     <div>
                         <input {...register("sellerPhone", { required: "Mobile number is required" })}
                             type="number" className="input input-bordered input-sm w-full focus:border-none" placeholder="Seller mobile number*" />
