@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import Loader from '../../../src/components/Loader/Loader';
 import { MdLocationOn, MdVerified, MdDateRange } from 'react-icons/md';
@@ -12,6 +12,11 @@ const CategoryPage = () => {
     const { currentUser } = useContext(AuthContext);
     const products = useLoaderData();
     const navigation = useNavigation();
+
+    //scroll at the top after page is rendered
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     //api to get user data by email
     const { data: userData = [] } = useQuery({
@@ -28,13 +33,13 @@ const CategoryPage = () => {
     }
     return (
         <div className=' bg-[#e6e6e6]'>
-            <h1 className='text-center text-4xl py-4 lg:py-10'>Available products</h1>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 p-5 lg:p-20'>
+            <h1 className='text-center text-4xl font-semibold pt-4 lg:pt-5'>Available product{products.length > 1 && "s"} </h1>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 p-5 lg:p-10'>
                 {
                     products?.map(product =>
                         <div key={product._id} className="card lg:card-side bg-base-100 shadow-xl rounded-2xl">
                             <figure><img src={product.productImage} alt="Album" /></figure>
-                            <div className="card-body ">
+                            <div className="card-body lg:p-6">
                                 <h2 className="card-title text-lg">{product.productName}</h2>
                                 <p className='text-sm'>{product.productDescription.slice(0, 60)}..</p>
                                 <p className='text-xs flex items-center '>
