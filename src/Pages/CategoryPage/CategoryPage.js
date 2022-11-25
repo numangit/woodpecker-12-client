@@ -79,12 +79,31 @@ const CategoryPage = () => {
                                     </div>
                                 </p> */}
                                 <div className="card-actions justify-end">
-                                    <button className="btn btn-sm btn-primary rounded-md w-full">Buy Now</button>
+                                    <label
+                                        htmlFor="booking-modal"
+                                        className="btn btn-sm btn-primary rounded-md w-full">
+                                        PLACE ORDER
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    )
-                }
+                    )}
+            </div>
+            <div>
+                <input type="checkbox" id="booking-modal" className="modal-toggle" />
+                <div className="modal">
+                    <div className="modal-box relative">
+                        <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <form className='grid grid-cols-1 gap-3 mt-10'>
+                            <input type="text" disabled value={userData?.displayName} className="input w-full input-bordered " />
+                            <input name="name" type="text" defaultValue={currentUser?.displayName} placeholder="Your Name" className="input w-full input-bordered" />
+                            <input name="email" type="email" defaultValue={currentUser?.email} placeholder="Email Address" className="input w-full input-bordered" readOnly />
+                            <input name="phone" type="text" placeholder="Phone Number" className="input w-full input-bordered" />
+                            <br />
+                            <input className='btn btn-accent w-full' type="submit" value="Submit" />
+                        </form>
+                    </div>
+                </div>
             </div>
 
         </div>

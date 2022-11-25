@@ -2,15 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
-import { ImCross } from 'react-icons/im';
-import { IoMdDoneAll } from 'react-icons/io';
 import { HiSpeakerphone } from 'react-icons/hi';
+import toast from 'react-hot-toast';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
 
     //api to get products by user email
-    const { data: myProducts = [] } = useQuery({
+    const { data: myProducts = [], refetch } = useQuery({
         queryKey: ['myProducts', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/myProducts?email=${user?.email}`);
@@ -19,6 +18,34 @@ const MyProducts = () => {
             return data;
         }
     })
+
+    //function to advertise product
+    const handleAdvertise = (id) => {
+        fetch(`http://localhost:5000/product/advertise/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Product advertised successfully')
+                    refetch();
+                }
+            })
+    }
+
+    //function to delete product
+    const handleDeleteProduct = id => {
+        fetch(`http://localhost:5000/myProducts/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success("Product deleted successfully")
+                }
+            })
+    }
 
     return (
         <div>
@@ -31,7 +58,7 @@ const MyProducts = () => {
                             <th className="bg-gray-900 text-white">Product Name</th>
                             <th className="bg-gray-900 text-white">Price</th>
                             <th className="bg-gray-900 text-white">Sale status</th>
-                            <th className="bg-gray-900 text-white">Paid Status</th>
+                            <th className="bg-gray-900 text-white">Advertise</th>
                             <th className="bg-gray-900 text-white">Delete</th>
                         </tr>
                     </thead>
@@ -51,15 +78,15 @@ const MyProducts = () => {
                                 <td>
                                     {
                                         product?.onStock ||
-                                        <label htmlFor="confirmation-modal" className="flex justify-center font-bold text-xs uppercase">sold</label>
+                                        <label htmlFor="confirmation-modal" className="flex justify-center text-red-500 font-bold text-xs uppercase">sold</label>
                                     }
                                     {
                                         product?.onStock &&
-                                        <label htmlFor="confirmation-modal" className="flex items-center hover:text-blue-500 font-semibold text-xs uppercase"><HiSpeakerphone /> &nbsp;Advertise
+                                        <label htmlFor="confirmation-modal" className="flex items-center text-green-600 font-bold text-xs uppercase">Available
                                         </label>
                                     }
                                 </td>
-                                <td>
+                                {/* <td>
                                     {
                                         product?.paid &&
                                         <label htmlFor="confirmation-modal" className="flex items-center text-green-500 font-semibold text-xs uppercase"><IoMdDoneAll />&nbsp;Paid</label>
@@ -69,9 +96,19 @@ const MyProducts = () => {
                                         <label htmlFor="confirmation-modal" className="flex items-center text-red-600 font-bold text-xs uppercase"><ImCross /> &nbsp;Not Paid</label>
                                     }
 
+                                </td> */}
+                                <td>
+                                    {
+                                        product?.onStock &&
+                                        <label htmlFor="confirmation-modal" className="btn btn-accent btn-sm rounded-md flex items-center hover:text-blue-500 font-bold text-xs uppercase">
+                                            <div onClick={() => handleAdvertise(product._id)} className="flex">
+                                                <HiSpeakerphone /> &nbsp;<p>Advertise</p>
+                                            </div>
+                                        </label>
+                                    }
                                 </td>
                                 <td>
-                                    <label htmlFor="confirmation-modal" className="flex justify-center text-2xl hover:text-red-600"><RiDeleteBin2Fill />
+                                    <label onClick={() => handleDeleteProduct(product._id)} className="flex justify-center text-2xl hover:text-red-600"><RiDeleteBin2Fill />
                                     </label>
                                 </td>
                             </tr>)
