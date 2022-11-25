@@ -5,11 +5,14 @@ import { IoMdImages } from 'react-icons/io';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../../../components/Loader/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddAProduct = () => {
     const { user } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [formError, setFormError] = useState('')
+    const navigate = useNavigate();
 
     // getting product categories from api
     const { data: productCategories = [], isLoading } = useQuery({
@@ -73,6 +76,8 @@ const AddAProduct = () => {
                         .then(res => res.json())
                         .then(result => {
                             console.log(result);
+                            toast.success("Product added successfully");
+                            navigate('/dashboard/myproducts');
                         })
                 }
             })
