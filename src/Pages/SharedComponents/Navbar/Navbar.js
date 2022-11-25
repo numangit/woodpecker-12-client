@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/icons8-bird-64.png'
+import logo from '../../../assets/icons8-bird-64.png';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { BiUser } from 'react-icons/bi';
 
@@ -60,7 +60,7 @@ const Navbar = () => {
                     </div>
                     <Link to="/" className="btn btn-ghost normal-case text-xl">
                         <img className="w-10 mr-1" src={logo} alt="" />
-                        Woodpecker
+                        <span className='font-serif font-thin'> Woodpecker</span>
                     </Link>
                 </div>
                 {/* large screen screen */}

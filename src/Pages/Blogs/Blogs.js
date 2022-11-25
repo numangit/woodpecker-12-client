@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Blogs = () => {
+    //scroll at the top after page is rendered
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className="lg:py-10 py-14 px-2">
             <h2 className=" text-center font-bold text-3xl my-3 lg:my-5">Frequently Asked Questions</h2>

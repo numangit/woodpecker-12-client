@@ -8,7 +8,6 @@ const useRoleCheck = email => {
             fetch(`http://localhost:5000/users/role/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     setRole(data.role);
                     setIsRoleLoading(false);
                 })
