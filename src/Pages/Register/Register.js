@@ -84,7 +84,7 @@ const SignUp = () => {
 
     return (
         <div className="shadow-lg p-10 lg:mx-auto w-full lg:w-96 rounded-xl my-5 lg:my-24 border text-dark">
-            <h2 className="text-3xl text-center font-semibold my-3">Register</h2>
+            <h2 className="text-3xl text-center font-semibold mb-3">Register</h2>
             <p className='text-center text-slate-400'>Join us!</p>
             <form onSubmit={handleSubmit(handleSignUp)}>
                 <div>
@@ -139,9 +139,9 @@ const SignUp = () => {
                 </div>
                 <input className='btn btn-accent w-full mt-3' value="Register" type="submit" />
             </form>
-            <p className="text-sm my-1">Already have an account? <Link className="underline" to="/login">Login</Link></p>
             <div className="divider">OR</div>
             <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+            <p className="text-sm mt-2 text-center">Already have an account? <Link className="underline" to="/login">Login</Link></p>
         </div>
     );
 };

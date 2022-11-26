@@ -69,12 +69,10 @@ const Login = () => {
             });
     }
 
-    //REMINDER: you will need to install react hook form to use this kind of form.
-    //stop and restart the react app if the error handling does'nt work.
     return (
         <div >
             <div className="shadow-md p-10 lg:mx-auto w-full lg:w-96 rounded-xl my-5 lg:my-24 border">
-                <h2 className="text-3xl text-center font-semibold my-3">Login</h2>
+                <h2 className="text-3xl text-center font-semibold mb-3">Login</h2>
                 <p className='text-center text-slate-400'>welcome back!</p>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div>
@@ -113,24 +111,11 @@ const Login = () => {
                     </div>
                     <input className='btn btn-accent w-full mt-3' value="Login" type="submit" />
                 </form >
-                <p className="text-sm my-1">Don't have an account? <Link className="underline" to="/register">Create new account</Link></p>
                 <div className="divider">OR</div>
                 <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+                <p className="text-sm mt-3 text-center">Don't have an account? <Link className="underline" to="/register">Create new account</Link></p>
 
                 {/* modal */}
-                {/* <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-            <div className="modal">
-                <div className="modal-box relative">
-                    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="font-bold text-lg">Please enter your email</h3>
-                    <form onSubmit={handlePasswordReset} >
-                        <div className="form-control w-full ">
-                            <input name="email" type="email" className="input input-bordered w-full my-2" placeholder='Your email' />
-                        </div>
-                        <button className="btn mx-auto w-full" type="submit">Send</button>
-                    </form>
-                </div>
-            </div> */}
                 <input type="checkbox" id="my-modal-4" className="modal-toggle" />
                 <label htmlFor="my-modal-4" className="modal cursor-pointer">
                     <label className="modal-box relative" htmlFor="">
