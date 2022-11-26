@@ -14,11 +14,6 @@ const AdvertiseSection = () => {
         }
     });
 
-    //return empty component if there is no advertised data
-    if (advertisedProducts.length < 1) {
-        return <></>
-    }
-
     //loader
     if (isLoading) {
         return <Loader></Loader>
