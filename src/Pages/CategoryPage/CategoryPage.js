@@ -60,6 +60,20 @@ const CategoryPage = () => {
             })
     }
 
+
+    //function to report product
+    const handleReport = (id) => {
+        fetch(`http://localhost:5000/product/report/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Product reported')
+                }
+            })
+    }
+
     return (
         <div className="bg-[#e6e6e6]">
             <h1 className='text-center text-4xl font-thin font-comfortaa text-white py-4 lg:py-12 bg-fixed' style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9T6Prp4Mp7D8klfwOxuKPLXbjzs5BoacasgemWaOOJUJirMHuUjYSXYboJiyOhb6nAPk&usqp=CAU")` }}>
@@ -70,9 +84,18 @@ const CategoryPage = () => {
                     products?.map(product =>
                         <div key={product._id} className="card lg:card-side bg-base-100 shadow-xl rounded-2xl">
                             <figure><img src={product.productImage} alt="Album" /></figure>
-                            <div className="card-body lg:p-6">
+                            <div className="card-body lg:p-3">
                                 <h2 className="card-title text-lg">{product.productName}</h2>
-                                <p className='text-sm'>{product.productDescription.slice(0, 60)}..</p>
+                                <p className='text-xs'>{product.productDescription.slice(0, 60)}..</p>
+                                <div className="flex justify-between cursor-pointer text-xs">
+                                    <p className='text-xs flex items-center '>
+                                        <ImUserTie />&nbsp;by&nbsp;<span className='font-semibold'>{product.sellerName}&nbsp;</span>
+                                        {
+                                            product?.sellerVerified && <MdVerified className='text-blue-500' />
+                                        }
+                                    </p>
+                                    <div onClick={() => handleReport(product._id)} className="badge badge-sm badge-ghost hover:badge-warning">Report</div>
+                                </div>
                                 <p className='text-xs flex items-center '>
                                     <ImPriceTag />&nbsp;Original Price: $
                                     <span className='font-semibold'>{product.originalPrice}</span>
@@ -87,12 +110,6 @@ const CategoryPage = () => {
                                     <span className='font-semibold'>
                                         {product.yearsOfUse} year{product.yearsOfUse > 1 && "s"}
                                     </span>
-                                </p>
-                                <p className='text-xs flex items-center '>
-                                    <ImUserTie />&nbsp;by&nbsp;<span className='font-semibold'>{product.sellerName}</span>
-                                    {
-                                        product?.sellerVerified && <MdVerified className='text-blue-500' />
-                                    }
                                 </p>
                                 <p className='text-xs flex items-center'><MdLocationOn />
                                     {product?.sellerLocation}
@@ -113,6 +130,7 @@ const CategoryPage = () => {
                         </div>
                     )}
             </div>
+            {/* modal */}
             <div>
                 <input type="checkbox" id="order-modal" className="modal-toggle" />
                 <div className="modal">
