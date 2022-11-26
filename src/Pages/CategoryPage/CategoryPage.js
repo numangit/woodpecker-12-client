@@ -143,13 +143,13 @@ const CategoryPage = () => {
                                 <label className="label">
                                     <span className="label-text font-semibold text-md "> Your phone number<span className='text-red-600'>*</span> : </span>
                                 </label>
-                                <input name="buyerPhone" type="number" placeholder="+179 XXX XXX" className="input input-sm w-full input-bordered rounded-md" />
+                                <input name="buyerPhone" type="number" placeholder="+179 XXX XXX" className="input input-sm w-full input-bordered rounded-md" required />
                             </div>
                             <div className='grid grid-cols-2'>
                                 <label className="label">
                                     <span className="label-text font-semibold text-md "> Meeting Location<span className='text-red-600'>*</span> : </span>
                                 </label>
-                                <input name="buyerLocation" type="text" placeholder={selectedProduct?.sellerLocation} className="input input-sm w-full input-bordered rounded-md" />
+                                <input name="buyerLocation" type="text" placeholder={selectedProduct?.sellerLocation} className="input input-sm w-full input-bordered rounded-md" required />
                             </div>
                             <input className='btn btn-sm btn-accent w-full' type="submit" value="Submit" />
                         </form>
