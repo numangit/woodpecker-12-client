@@ -6,8 +6,8 @@ const Banner = () => {
             <div className=" bg-opacity-0"></div>
             <div className="hero-content ml-auto mr-20 text-center text-gray-900">
                 <div className="max-w-md">
-                    <h1 className="my-1 text-5xl lg:text-6xl font-bold">Woodpecker</h1>
-                    <p className="ml-auto text-xl lg:text-2xl font-thin">The Best Quality Used Furniture</p>
+                    <h1 data-aos="fade-down" className="my-1 text-5xl lg:text-6xl font-bold">Woodpecker</h1>
+                    <p data-aos="fade-left" data-aos-duration="800" className="ml-auto text-xl lg:text-2xl font-thin">The Best Quality Used Furniture</p>
                 </div>
             </div>
         </div>

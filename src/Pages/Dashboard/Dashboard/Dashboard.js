@@ -15,8 +15,11 @@ const Dashboard = () => {
                 <div className='w-4/5 lg:w-1/2 mx-auto lg:my-0 lg:py-0'>
                     <Lottie animationData={hello} loop={true} />
                 </div>
-                <h1 className="text-4xl font-semibold text-center">Welcome to your Dashboard</h1>
-                <p className="text-center text-xl font-thin my-1">Explore the available options for your role.</p>
+                <h1 data-aos="fade-right" className="text-4xl font-semibold text-center">Welcome to your Dashboard</h1>
+                <p data-aos="fade-left"
+                    data-aos-anchor="#example-anchor"
+                    data-aos-offset="500"
+                    data-aos-duration="500" className="text-center text-xl font-thin my-1">Explore the available options for your role.</p>
             </div>
         </div>
     );

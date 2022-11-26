@@ -8,8 +8,8 @@ const Blogs = () => {
 
     return (
         <div className="lg:py-10 py-14 px-2 bg-[#e6e6e6] ">
-            <h2 className=" text-center font-bold text-3xl my-3 lg:my-5">Frequently Asked Questions</h2>
-            <div className="lg:py-5 py-2 lg:my-1 my-2 h-auto">
+            <h2 data-aos="fade-down" className=" text-center font-bold text-3xl my-3 lg:my-5">Frequently Asked Questions</h2>
+            <div data-aos="fade-up" data-aos-duration="500" className="lg:py-5 py-2 lg:my-1 my-2 h-auto">
                 <div className="collapse collapse-plus border border-base-300 bg-white rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-lg font-medium">

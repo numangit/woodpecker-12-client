@@ -76,17 +76,21 @@ const CategoryPage = () => {
 
     return (
         <div className="bg-[#e6e6e6]">
-            <h1 className='text-center text-4xl font-thin font-comfortaa text-white py-4 lg:py-12 bg-fixed' style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9T6Prp4Mp7D8klfwOxuKPLXbjzs5BoacasgemWaOOJUJirMHuUjYSXYboJiyOhb6nAPk&usqp=CAU")` }}>
-                Available product{products.length > 1 && "s"}
-            </h1>
+            <div className='text-center text-white p-7 lg:p-7 py-4 lg:py-12 bg-fixed' style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9T6Prp4Mp7D8klfwOxuKPLXbjzs5BoacasgemWaOOJUJirMHuUjYSXYboJiyOhb6nAPk&usqp=CAU")` }}>
+                <h1 data-aos="fade-down" className='text-center text-4xl font-thin font-comfortaa text-white my-2'>
+                    Available product{products.length > 1 && "s"}
+                </h1>
+                <p data-aos="fade-up" className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>we connects a love of great design with a greater love for our environment by keeping furniture out of landfills and in our homes for as long as possible.</p>
+            </div>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 p-5 lg:p-10'>
                 {
                     products?.map(product =>
-                        <div key={product._id} className="card lg:card-side bg-base-100 shadow-xl rounded-2xl">
-                            <figure><img className="" src={product.productImage} alt="Album" /></figure>
+                        <div data-aos="fade-up" data-aos-duration="500" key={product._id} className="card lg:card-side bg-base-100 shadow-xl rounded-2xl">
+                            <figure className='lg:w-3/4'><img className="object-fill" src={product.productImage} alt="Album" /></figure>
                             <div className="card-body lg:p-3">
                                 <h2 className="card-title text-lg">{product.productName}</h2>
-                                <p className='text-xs'>{product.productDescription.slice(0, 60)}..</p>
+                                <p className='text-xs'>{product.productDescription.slice(0, 80)}..</p>
+                                <div className="divider my-0 py-0"></div>
                                 <div className="flex justify-between cursor-pointer text-xs">
                                     <p className='text-xs flex items-center '>
                                         <ImUserTie />&nbsp;by&nbsp;<span className='font-semibold'>{product.sellerName}&nbsp;</span>

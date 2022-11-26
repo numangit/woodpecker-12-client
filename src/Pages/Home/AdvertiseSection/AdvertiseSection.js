@@ -21,8 +21,8 @@ const AdvertiseSection = () => {
     return (
         <div className='p-6 lg:p-8 bg-[#f2f2f2]'>
             <div className=''>
-                <h1 className='text-3xl font-bold text-center'>Checkout Our Product</h1>
-                <p className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>Some of our customers say that they trust us and buy our product without any hesitation because they believe us and always happy to buy our product.</p>
+                <h1 data-aos="fade-up" data-aos-duration="500" className='text-3xl font-bold text-center'>Checkout Our Product</h1>
+                <p data-aos="fade-up" data-aos-duration="700" className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>Moving to a new space or redecorating? <br className='hidden md:block' /> Extend the life of great design by buying pre-loved and save up to 90% on top furniture brands.</p>
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-4 gap-10 my-10'>
                 {
@@ -31,7 +31,7 @@ const AdvertiseSection = () => {
                             <figure><img src={product.productImage} alt="Shoes" /></figure>
                             <div className="card-body">
                                 <div className="card-actions justify-end">
-                                    <div className="badge badge-sm badge-warning">Advertised</div>
+                                    <div className="badge badge-sm badge-outline -mr-5">Advertised</div>
                                 </div>
                                 <h2 className="card-title text-xl">
                                     {product.productName}

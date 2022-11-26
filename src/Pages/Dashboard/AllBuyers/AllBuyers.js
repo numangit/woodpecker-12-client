@@ -34,7 +34,7 @@ const AllBuyers = () => {
     return (
         <div>
             <div className="overflow-x-auto p-10 mx-auto">
-                <table className="table w-full">
+                <table data-aos="fade-down" data-aos-duration="500" className="table w-full">
                     <thead >
                         <tr>
                             <th className="bg-gray-900 text-white text-center">Buyer No.</th>
