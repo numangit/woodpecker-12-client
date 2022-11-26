@@ -49,7 +49,7 @@ const MyProducts = () => {
 
     return (
         <div>
-            <div className="overflow-x-auto p-10 mx-auto">
+            <div className="overflow-x-auto p-5 mx-auto">
                 <table className="table w-full">
                     <thead >
                         <tr>
