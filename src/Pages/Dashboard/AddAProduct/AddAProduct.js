@@ -7,11 +7,13 @@ import Loader from '../../../components/Loader/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { TailSpin } from 'react-loader-spinner'
 
 const AddAProduct = () => {
     const { user } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [formError, setFormError] = useState('')
+    const [formError, setFormError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     // getting product categories from api
@@ -64,7 +66,7 @@ const AddAProduct = () => {
                         postedDate: new Date()
                     }
                     console.log(productDetails);
-
+                    setLoading(true)
                     // save products information to the database
                     fetch('http://localhost:5000/products', {
                         method: 'POST',
@@ -76,6 +78,7 @@ const AddAProduct = () => {
                         .then(res => res.json())
                         .then(result => {
                             console.log(result);
+                            setLoading(false);
                             toast.success("Product added successfully");
                             navigate('/dashboard/myproducts');
                         })
@@ -189,7 +192,25 @@ const AddAProduct = () => {
                         {...register("productDescription", { required: "Description must be filled" })}></textarea>
                     {errors.productDescription && <p className="text-red-500 text-xs" role="alert">{errors.productDescription?.message}</p>}
                 </div>
-                <input className='btn btn-accent w-full' value="Add Product" type="submit" />
+                {
+                    loading ?
+                        <button className='btn btn-accent w-full' type="submit">
+                            <TailSpin
+                                height="30"
+                                width="30"
+                                color="#2196f3"
+                                ariaLabel="tail-spin-loading"
+                                radius="1"
+                                wrapperStyle={{}}
+                                wrapperClass=""
+                                visible={true}
+                            />
+                            <span className='mx-1'>Add Product</span>
+                        </button>
+                        :
+                        <input className='btn btn-accent w-full' value="Add Product" type="submit" />
+
+                }
             </form>
 
         </div>

@@ -36,14 +36,14 @@ const AdvertiseSection = () => {
                             <figure><img src={product.productImage} alt="Shoes" /></figure>
                             <div className="card-body">
                                 <div className="card-actions justify-end">
-                                    <div className="badge badge-sm badge-accent">Advertised</div>
+                                    <div className="badge badge-sm badge-warning">Advertised</div>
                                 </div>
                                 <h2 className="card-title">
                                     {product.productName}
                                 </h2>
                                 <p className='text-3xl flex items-center '>
                                     <ImPriceTag />&nbsp;$
-                                    <span className='font-semibold'>{product.resalePrice}</span>&nbsp;
+                                    <span className='font-semibold text-orange-500'>{product.resalePrice}</span>&nbsp;
                                     <span className='text-xl line-through text-slate-700'>${product.originalPrice}</span>
                                 </p>
                             </div>
