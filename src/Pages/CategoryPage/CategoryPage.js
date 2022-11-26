@@ -32,7 +32,7 @@ const CategoryPage = () => {
         return <Loader></Loader>
     }
     return (
-        <div className=' bg-[#e6e6e6]'>
+        <div className="bg-[#e6e6e6]">
             <h1 className='text-center text-4xl font-semibold pt-4 lg:pt-5'>Available product{products.length > 1 && "s"} </h1>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 p-5 lg:p-10'>
                 {
