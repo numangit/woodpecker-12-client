@@ -9,10 +9,10 @@ const Blogs = () => {
     return (
         <div className="lg:py-10 py-14 px-2 bg-[#e6e6e6] ">
             <h2 className=" text-center font-bold text-3xl my-3 lg:my-5">Frequently Asked Questions</h2>
-            <div className="lg:py-10 py- lg:my-4 my-2 h-auto">
+            <div className="lg:py-5 py-2 lg:my-1 my-2 h-auto">
                 <div className="collapse collapse-plus border border-base-300 bg-white rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-lg font-medium">
                         What are the different ways to manage a state in a React application?
                     </div>
                     <div className="collapse-content">
@@ -40,7 +40,7 @@ const Blogs = () => {
                 </div>
                 <div className="collapse collapse-plus border border-base-300  bg-white rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-lg">
                         How does prototypical inheritance work?
                     </div>
                     <div className="collapse-content">
@@ -49,7 +49,7 @@ const Blogs = () => {
                 </div>
                 <div className="collapse collapse-plus border border-base-300  bg-white rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-lg font-medium">
                         What is a unit test? Why should we write unit tests?
                     </div>
                     <div className="collapse-content">
@@ -58,7 +58,7 @@ const Blogs = () => {
                 </div>
                 <div className="collapse collapse-plus border border-base-300  bg-white rounded-box mx-auto lg:w-1/2 my-2">
                     <input type="checkbox" />
-                    <div className="collapse-title text-xl font-medium">
+                    <div className="collapse-title text-lg font-medium">
                         React vs. Angular vs. Vue?
                     </div>
                     <div className="collapse-content">

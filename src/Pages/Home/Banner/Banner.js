@@ -6,7 +6,7 @@ const Banner = () => {
             <div className=" bg-opacity-0"></div>
             <div className="hero-content ml-auto mr-20 text-center text-gray-900">
                 <div className="max-w-md">
-                    <h1 className="my-1 text-5xl font-serif lg:text-6xl font-bold">Woodpecker</h1>
+                    <h1 className="my-1 text-5xl lg:text-6xl font-bold">Woodpecker</h1>
                     <p className="ml-auto text-2xl lg:text-3xl font-thin">The Best Quality Used Furniture</p>
                 </div>
             </div>

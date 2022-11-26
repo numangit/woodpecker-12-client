@@ -62,7 +62,7 @@ const CategoryPage = () => {
 
     return (
         <div className="bg-[#e6e6e6]">
-            <h1 className='text-center text-4xl font-thin font-serif text-white py-4 lg:py-12 bg-fixed' style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9T6Prp4Mp7D8klfwOxuKPLXbjzs5BoacasgemWaOOJUJirMHuUjYSXYboJiyOhb6nAPk&usqp=CAU")` }}>
+            <h1 className='text-center text-4xl font-thin font-comfortaa text-white py-4 lg:py-12 bg-fixed' style={{ backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9T6Prp4Mp7D8klfwOxuKPLXbjzs5BoacasgemWaOOJUJirMHuUjYSXYboJiyOhb6nAPk&usqp=CAU")` }}>
                 Available product{products.length > 1 && "s"}
             </h1>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 p-5 lg:p-10'>

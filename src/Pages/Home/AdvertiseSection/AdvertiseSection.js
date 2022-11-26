@@ -19,7 +19,7 @@ const AdvertiseSection = () => {
         return <Loader></Loader>
     }
     return (
-        <div className='p-6 lg:p-12 bg-[#f2f2f2]'>
+        <div className='p-6 lg:p-8 bg-[#f2f2f2]'>
             <div className=''>
                 <h1 className='text-3xl font-bold text-center'>Checkout Our Product</h1>
                 <p className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>Some of our customers say that they trust us and buy our product without any hesitation because they believe us and always happy to buy our product.</p>

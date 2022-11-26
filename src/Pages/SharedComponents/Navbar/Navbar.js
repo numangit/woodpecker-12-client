@@ -60,7 +60,7 @@ const Navbar = () => {
                     </div>
                     <Link to="/" className="btn btn-ghost normal-case text-xl">
                         <img className="w-10 mr-1" src={logo} alt="" />
-                        <span className='font-serif font-thin'> Woodpecker</span>
+                        <span className='font-comfortaa font-thin'> Woodpecker</span>
                     </Link>
                 </div>
                 {/* large screen screen */}
