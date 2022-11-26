@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { MdLocationOn, MdVerified, MdDateRange } from 'react-icons/md';
 import { BiTime } from 'react-icons/bi';
+import { BsFillInfoCircleFill } from 'react-icons/bs';
 import { SlCalender } from 'react-icons/sl';
 import { ImUserTie, ImPriceTag } from 'react-icons/im';
 import { AuthContext } from '../../Contexts/AuthProvider';
@@ -138,8 +139,10 @@ const CategoryPage = () => {
             <div>
                 <input type="checkbox" id="order-modal" className="modal-toggle" />
                 <div className="modal">
-                    <div className="modal-box relative backdrop-blur bg-base-100/60 lg:w-1/3">
-                        <label htmlFor="order-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <div className="modal-box relative backdrop-blur bg-white/80 rounded-2xl lg:w-1/3">
+                        <label htmlFor="order-modal" className="btn btn-xs btn-circle absolute right-4 top-3">✕</label>
+                        <h3 className="text-md font-bold flex items-center"><BsFillInfoCircleFill />&#160;Please fill up order details</h3>
+                        <div className="divider my-0 py-0"></div>
                         <form onSubmit={handleOrderNow} className='grid grid-cols-1 gap-3 mt-5'>
                             <div className='grid grid-cols-2'>
                                 <label className="label">
