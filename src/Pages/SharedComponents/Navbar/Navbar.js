@@ -16,12 +16,12 @@ const Navbar = () => {
 
     //Nav links
     const menuItems = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/blogs">Blogs</Link></li>
+        <li className="text-sm hover:text-blue-400"><Link to="/">Home</Link></li>
+        <li className="text-sm hover:text-blue-400"><Link to="/blogs">Blogs</Link></li>
         {
             user?.uid ?
                 <>
-                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <li className="text-sm hover:text-blue-400"><Link to="/dashboard">Dashboard</Link></li>
                     <div className="h-auto m-0 p-0 bg-zinc-700 w-[1px]"></div>
                     {
                         user?.photoURL ?
@@ -32,20 +32,20 @@ const Navbar = () => {
                             </div>
                             : <FaUserCircle className="text-xl my-auto mx-2 hidden lg:block" title={user?.displayName} />
                     }
-                    <li><button className='lg:p-0' onClick={handleLogOut}>Log out</button></li>
+                    <li className="text-sm hover:text-blue-400"><button className='lg:p-0' onClick={handleLogOut}>Log out</button></li>
                 </>
                 :
                 <>
                     {/* <div className="h-auto m-0 p-0 bg-slate-700 w-[1px]"></div> */}
-                    <li><Link to="/register">Register</Link></li>
-                    <li><Link to="/login">Login</Link></li>
+                    <li className="text-sm hover:text-blue-400"><Link to="/register">Register</Link></li>
+                    <li className="text-sm hover:text-blue-400"><Link to="/login">Login</Link></li>
                 </>
         }
     </>
 
     // bg-primary/50 backdrop-blur
     return (
-        <div data-theme="" className='sticky top-0 z-50 bg-primary text-white '>
+        <div data-theme="" className='sticky top-0 z-50 backdrop-blur bg-primary/95 text-white '>
             {/* change nav color when scrolling conditional className */}
             <div className="navbar flex justify-between py-0 my-0">
                 <div className="navbar-start">

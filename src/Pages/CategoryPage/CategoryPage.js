@@ -83,7 +83,7 @@ const CategoryPage = () => {
                 {
                     products?.map(product =>
                         <div key={product._id} className="card lg:card-side bg-base-100 shadow-xl rounded-2xl">
-                            <figure><img src={product.productImage} alt="Album" /></figure>
+                            <figure><img className="" src={product.productImage} alt="Album" /></figure>
                             <div className="card-body lg:p-3">
                                 <h2 className="card-title text-lg">{product.productName}</h2>
                                 <p className='text-xs'>{product.productDescription.slice(0, 60)}..</p>

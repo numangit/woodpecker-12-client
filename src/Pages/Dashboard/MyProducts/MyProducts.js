@@ -35,7 +35,7 @@ const MyProducts = () => {
 
     //function to delete product
     const handleDeleteProduct = id => {
-        fetch(`http://localhost:5000/myProducts/${id}`, {
+        fetch(`http://localhost:5000/products/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -53,13 +53,13 @@ const MyProducts = () => {
                 <table className="table w-full">
                     <thead >
                         <tr>
-                            <th className="bg-gray-900 text-white">Product No.</th>
-                            <th className="bg-gray-900 text-white">Product image</th>
+                            <th className="bg-gray-900 text-white text-center">Product No.</th>
+                            <th className="bg-gray-900 text-white text-center">Product image</th>
                             <th className="bg-gray-900 text-white">Product Name</th>
-                            <th className="bg-gray-900 text-white">Price</th>
-                            <th className="bg-gray-900 text-white">Sale status</th>
-                            <th className="bg-gray-900 text-white">Advertise</th>
-                            <th className="bg-gray-900 text-white">Delete</th>
+                            <th className="bg-gray-900 text-white text-center">Price</th>
+                            <th className="bg-gray-900 text-white text-center">Sale status</th>
+                            <th className="bg-gray-900 text-white text-center">Advertise</th>
+                            <th className="bg-gray-900 text-white text-center">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,45 +67,34 @@ const MyProducts = () => {
                             myProducts?.map((product, i) => <tr key={product._id}>
                                 <td className="text-center font-bold">{i + 1}</td>
                                 <td>
-                                    <div className="avatar">
+                                    <div className="avatar flex justify-center">
                                         <div className="w-12 rounded-md">
                                             <img src={product.productImage} alt="" />
                                         </div>
                                     </div>
                                 </td>
                                 <td className="font-bold text-sm">{product.productName}</td>
-                                <td className="font-bold text-xs">${product.resalePrice}</td>
+                                <td className="text-center font-bold text-xs">${product.resalePrice}</td>
                                 <td>
                                     {
                                         product?.onStock ||
-                                        <label htmlFor="confirmation-modal" className="flex justify-center text-red-500 font-bold text-xs uppercase">sold</label>
+                                        <label htmlFor="confirmation-modal" className="flex justify-center text-red-500 font-bold text-xs uppercase text-center">sold</label>
                                     }
                                     {
                                         product?.onStock &&
-                                        <label htmlFor="confirmation-modal" className="flex items-center text-green-600 font-bold text-xs uppercase">Available
+                                        <label htmlFor="confirmation-modal" className="flex justify-center items-center text-green-600 font-bold text-xs uppercase">Available
                                         </label>
                                     }
                                 </td>
-                                {/* <td>
-                                    {
-                                        product?.paid &&
-                                        <label htmlFor="confirmation-modal" className="flex items-center text-green-500 font-semibold text-xs uppercase"><IoMdDoneAll />&nbsp;Paid</label>
-                                    }
-                                    {
-                                        product?.paid ||
-                                        <label htmlFor="confirmation-modal" className="flex items-center text-red-600 font-bold text-xs uppercase"><ImCross /> &nbsp;Not Paid</label>
-                                    }
-
-                                </td> */}
                                 <td>
                                     {
                                         (product?.onStock && !product?.advertised)
-                                            ? <label className="btn btn-accent btn-sm rounded-md flex items-center hover:text-blue-500 font-bold text-xs uppercase">
+                                            ? <label className="btn btn-accent btn-sm rounded-md flex items-center justify-center hover:text-blue-500 font-bold text-xs uppercase">
                                                 <div onClick={() => handleAdvertise(product._id)} className="flex">
                                                     <HiSpeakerphone /> &nbsp;<p>Advertise</p>
                                                 </div>
                                             </label>
-                                            : <button disabled className="btn btn-ghost btn-sm rounded-md flex items-center hover:text-blue-500 font-bold text-xs uppercase">
+                                            : <button disabled className="btn btn-ghost btn-sm rounded-md flex items-center justify-center hover:text-blue-500 font-bold text-xs uppercase">
                                                 <div onClick={() => handleAdvertise(product._id)} className="flex">
                                                     <HiSpeakerphone /> &nbsp;<p>Advertised</p>
                                                 </div>

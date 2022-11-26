@@ -27,15 +27,15 @@ const DashboardLayout = () => {
                     <ul className="menu p-4 w-72 bg-gray-900 text-white">
                         {
                             role === "buyer" &&
-                            <li className='text-base hover:font-medium'><Link to="/dashboard/myorders"><AiOutlineShopping /> My Orders</Link></li>
+                            <li className='text-sm hover:translate-x-2 duration-300'><Link to="/dashboard/myorders"><AiOutlineShopping /> My Orders</Link></li>
                         }
                         {
                             role === "seller" &&
                             <>
-                                <li className='text-base hover:font-medium'>
+                                <li className='text-sm hover:translate-x-2 duration-300'>
                                     <Link to="/dashboard/addaproduct"><MdOutlinePlaylistAdd />Add a Product</Link>
                                 </li>
-                                <li className='text-base hover:font-medium'>
+                                <li className='text-sm hover:translate-x-2 duration-300'>
                                     <Link to="/dashboard/myproducts"><RiShoppingBag3Line />My Products</Link>
                                 </li>
                             </>
@@ -43,13 +43,13 @@ const DashboardLayout = () => {
                         {
                             role === "admin" &&
                             <>
-                                <li className='text-base hover:font-medium'>
+                                <li className='text-sm hover:translate-x-2 duration-300'>
                                     <Link to="/dashboard/allsellers"><BsFileEarmarkPerson />All Sellers</Link>
                                 </li>
-                                <li className='text-base hover:font-medium'>
+                                <li className='text-sm hover:translate-x-2 duration-300'>
                                     <Link to="/dashboard/allbuyers"><RiFolderUserFill />All Buyers</Link>
                                 </li>
-                                <li className='text-base hover:font-medium'>
+                                <li className='text-sm hover:translate-x-2 duration-300'>
                                     <Link to="/dashboard/reporteditems"><MdReportProblem />Reported Items</Link>
                                 </li>
                             </>

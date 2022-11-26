@@ -33,10 +33,10 @@ const AdvertiseSection = () => {
                                 <div className="card-actions justify-end">
                                     <div className="badge badge-sm badge-warning">Advertised</div>
                                 </div>
-                                <h2 className="card-title">
+                                <h2 className="card-title text-xl">
                                     {product.productName}
                                 </h2>
-                                <p className='text-3xl flex items-center '>
+                                <p className='text-2xl flex items-center '>
                                     <ImPriceTag />&nbsp;$
                                     <span className='font-semibold text-orange-500'>{product.resalePrice}</span>&nbsp;
                                     <span className='text-xl line-through text-slate-700'>${product.originalPrice}</span>
