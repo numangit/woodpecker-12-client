@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/icons8-bird-64.png';
 import { AuthContext } from '../../../Contexts/AuthProvider';
-import { BiUser } from 'react-icons/bi';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -30,7 +30,7 @@ const Navbar = () => {
                                     <img className="" src={user?.photoURL} title={user?.displayName} alt="" />
                                 </div>
                             </div>
-                            : <BiUser className="text-3xl my-auto mx-2 hidden lg:block" title={user?.displayName} />
+                            : <FaUserCircle className="text-xl my-auto mx-2 hidden lg:block" title={user?.displayName} />
                     }
                     <li><button className='lg:p-0' onClick={handleLogOut}>Log out</button></li>
                 </>

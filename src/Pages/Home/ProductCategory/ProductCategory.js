@@ -23,13 +23,13 @@ const ProductCategory = () => {
         <div className="lg:py-10 py-4 bg-fixed bg-cover text-white" style={{ backgroundImage: `url("https://wallpaperaccess.com/full/773433.jpg")` }}>
             <div className=''>
                 <h1 className='text-3xl font-bold text-center '>Product Categories</h1>
-                <p className='mx-auto text-center font-semibold mt-4 my-1 max-w-2xl'>Some of our customers say that they trust us and buy our product without any hesitation because they believe us and always happy to buy our product.</p>
+                <p className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>Some of our customers say that they trust us and buy our product without any hesitation because they believe us and always happy to buy our product.</p>
             </div>
             <div className='p-5 lg:p-10 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-6'>
                 {
                     productCategories?.map(category =>
                         <Link key={category._id} to={`/category/${category._id}`} >
-                            <div className="p-3 rounded-lg backdrop-blur bg-white/10 hover:bg-white hover:text-gray-900 shadow-md hover:-mt-2 duration-300 m-1 flex items-center">
+                            <div className="p-3 rounded-lg backdrop-blur bg-white/10 hover:bg-white hover:text-gray-900 shadow-md hover:-mt-1 duration-300 m-1 flex items-center">
                                 <img className="w-1/3 rounded-full" src={category.imgUrl} alt="" />
                                 <p className='text-md uppercase font-bold text-center mx-auto'>{category.categoryName}</p>
                             </div>

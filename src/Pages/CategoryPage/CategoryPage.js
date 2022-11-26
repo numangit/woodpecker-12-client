@@ -9,7 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const CategoryPage = () => {
-    const { currentUser } = useContext(AuthContext);
+    const { user: currentUser } = useContext(AuthContext);
     const products = useLoaderData();
     const navigation = useNavigation();
 
@@ -27,6 +27,7 @@ const CategoryPage = () => {
             return data;
         }
     });
+    console.log(products);
 
     if (navigation.state === "loading") {
         return <Loader></Loader>
@@ -60,24 +61,16 @@ const CategoryPage = () => {
                                 <p className='text-xs flex items-center '>
                                     <ImUserTie />&nbsp;by&nbsp;<span className='font-semibold'>{product.sellerName}</span>
                                     {
-                                        userData.verified && <MdVerified className='text-blue-500' />
+                                        product?.sellerVerified && <MdVerified className='text-blue-500' />
                                     }
                                 </p>
                                 <p className='text-xs flex items-center'><MdLocationOn />
-                                    {product.sellerLocation}
+                                    {product?.sellerLocation}
                                 </p>
                                 <p className='text-xs font-semibold flex items-center'>
                                     <MdDateRange />{product.postedDate.slice(2, -14)}&nbsp;&nbsp;
                                     <BiTime />{product.postedDate.slice(11, -5)}
                                 </p>
-                                {/* <p className='text-xs font-semibold flex items-center justify-between'>
-                                    <div className='text-xs font-semibold flex items-center'>
-                                        <MdDateRange /> {product.postedDate.slice(2, -14)}
-                                    </div>
-                                    <div className='text-xs font-semibold flex items-center'>
-                                        <BiTime /> {product.postedDate.slice(11, -5)}
-                                    </div>
-                                </p> */}
                                 <div className="card-actions justify-end">
                                     <label
                                         htmlFor="booking-modal"

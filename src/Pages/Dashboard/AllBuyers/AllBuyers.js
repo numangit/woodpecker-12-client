@@ -37,18 +37,18 @@ const AllBuyers = () => {
                 <table className="table w-full">
                     <thead >
                         <tr>
-                            <th className="bg-gray-900 text-white">Buyer No.</th>
-                            <th className="bg-gray-900 text-white">Buyer Name</th>
-                            <th className="bg-gray-900 text-white">Buyer Email</th>
-                            <th className="bg-gray-900 text-white">Delete</th>
+                            <th className="bg-gray-900 text-white text-center">Buyer No.</th>
+                            <th className="bg-gray-900 text-white text-center">Buyer Name</th>
+                            <th className="bg-gray-900 text-white text-center">Buyer Email</th>
+                            <th className="bg-gray-900 text-white text-center">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             allBuyers?.map((buyer, i) => <tr key={buyer._id}>
                                 <td className="text-center font-bold">{i + 1}</td>
-                                <td className="font-bold text-sm">{buyer.name}</td>
-                                <td className="font-bold text-sm">{buyer.email}</td>
+                                <td className="text-center font-bold text-sm">{buyer.name}</td>
+                                <td className="text-center font-bold text-sm">{buyer.email}</td>
                                 <td>
                                     <label onClick={() => handleDeleteBuyer(buyer)} className="flex justify-center text-2xl hover:text-red-600"><RiDeleteBin2Fill />
                                     </label>

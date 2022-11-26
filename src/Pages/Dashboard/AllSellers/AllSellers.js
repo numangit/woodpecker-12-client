@@ -23,11 +23,18 @@ const AllSellers = () => {
             method: 'PUT'
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    toast.success(`${user.name} verified`)
-                    refetch();
-                }
+            .then(verifyData => {
+                console.log(verifyData);
+                fetch(`http://localhost:5000/products/sellerVerify/${user.email}`, {
+                    method: 'PUT'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount > 0) {
+                            toast.success(`${user.name} verified`)
+                            refetch();
+                        }
+                    })
             })
     }
 

@@ -32,6 +32,7 @@ const AddAProduct = () => {
     //function to handle form submit  
     const handleAddAProduct = data => {
         console.log(data)
+        setLoading(true)
         setFormError('');
         //get image data from form and upload to image bb
         const image = data.productImage[0];
@@ -66,7 +67,6 @@ const AddAProduct = () => {
                         postedDate: new Date()
                     }
                     console.log(productDetails);
-                    setLoading(true)
                     // save products information to the database
                     fetch('http://localhost:5000/products', {
                         method: 'POST',
