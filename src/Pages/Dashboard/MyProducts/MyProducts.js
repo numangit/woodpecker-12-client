@@ -99,12 +99,17 @@ const MyProducts = () => {
                                 </td> */}
                                 <td>
                                     {
-                                        product?.onStock &&
-                                        <label htmlFor="confirmation-modal" className="btn btn-accent btn-sm rounded-md flex items-center hover:text-blue-500 font-bold text-xs uppercase">
-                                            <div onClick={() => handleAdvertise(product._id)} className="flex">
-                                                <HiSpeakerphone /> &nbsp;<p>Advertise</p>
-                                            </div>
-                                        </label>
+                                        (product?.onStock && !product?.advertised)
+                                            ? <label className="btn btn-accent btn-sm rounded-md flex items-center hover:text-blue-500 font-bold text-xs uppercase">
+                                                <div onClick={() => handleAdvertise(product._id)} className="flex">
+                                                    <HiSpeakerphone /> &nbsp;<p>Advertise</p>
+                                                </div>
+                                            </label>
+                                            : <button disabled className="btn btn-ghost btn-sm rounded-md flex items-center hover:text-blue-500 font-bold text-xs uppercase">
+                                                <div onClick={() => handleAdvertise(product._id)} className="flex">
+                                                    <HiSpeakerphone /> &nbsp;<p>Advertised</p>
+                                                </div>
+                                            </button>
                                     }
                                 </td>
                                 <td>
