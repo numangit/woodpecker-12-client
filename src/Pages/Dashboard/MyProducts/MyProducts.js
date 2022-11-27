@@ -22,7 +22,10 @@ const MyProducts = () => {
     //function to advertise product
     const handleAdvertise = (id) => {
         fetch(`http://localhost:5000/product/advertise/${id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
+            }
         })
             .then(res => res.json())
             .then(data => {

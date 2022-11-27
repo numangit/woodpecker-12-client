@@ -151,7 +151,7 @@ const Login = () => {
                 </form >
                 <div className="divider">OR</div>
                 <button onClick={handleGoogleSignIn} className="btn btn-outline w-full flex items-center"><FcGoogle className='text-start text-lg' />&#160;&#160;CONTINUE WITH GOOGLE</button>
-                <p className="text-sm mt-3 text-center">Don't have an account? <Link className="underline" to="/register">Create new account</Link></p>
+                <p className="text-xs mt-3 text-center">Don't have an account? <Link className="underline" to="/register">Create new account</Link></p>
 
                 {/* modal */}
                 <input type="checkbox" id="my-modal-4" className="modal-toggle" />
