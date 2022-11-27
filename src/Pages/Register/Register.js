@@ -60,8 +60,8 @@ const SignUp = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                generateJwtToken(user.email);
                 saveUser(user.displayName, user.email);
+                generateJwtToken(user.email);
                 navigate(from, { replace: true });
                 setLoading(false);
             }).catch((error) => {

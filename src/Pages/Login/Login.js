@@ -65,8 +65,8 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                generateJwtToken(user.email)
                 saveUser(user.displayName, user.email);
+                generateJwtToken(user.email)
                 navigate(from, { replace: true });
                 toast.success('welcome back');
                 setLoading(false);

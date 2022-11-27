@@ -26,7 +26,7 @@ const MyOrders = () => {
 
     //loader
     if (isLoading) {
-        return <div className='flex items-center justify-center'> <Loader></Loader></div>
+        return <div className='flex items-center justify-center h-screen'> <Loader></Loader></div>
     }
 
     return (
@@ -43,8 +43,8 @@ const MyOrders = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            myOrders?.map((product, i) => <tr key={product._id}>
+                        {myOrders?.length &&
+                            myOrders?.map((product, i) => <tr key={product?._id}>
                                 <td className="text-center font-bold">{i + 1}</td>
                                 <td>
                                     <div className="avatar flex items-center justify-center">
