@@ -15,6 +15,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import ErrorPage from "../../Pages/SharedComponents/ErrorPage/ErrorPage";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 
@@ -67,23 +68,23 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/allSellers",
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: "/dashboard/allBuyers",
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
                 path: "/dashboard/reportedItems",
-                element: <ReportedItems></ReportedItems>
+                element: <AdminRoute><ReportedItems></ReportedItems></AdminRoute>
             },
             {
                 path: "/dashboard/myOrders",
-                element: <MyOrders></MyOrders>
+                element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <Payment></Payment>,
+                element: <PrivateRoute> <Payment></Payment></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/orders/${params.id}`)
             }
         ]

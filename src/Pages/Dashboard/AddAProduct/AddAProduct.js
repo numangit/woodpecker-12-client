@@ -6,8 +6,8 @@ import { useQuery } from '@tanstack/react-query';
 import Loader from '../../../components/Loader/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner'
+import { useNavigate } from 'react-router-dom';
 
 const AddAProduct = () => {
     const { user } = useContext(AuthContext);
