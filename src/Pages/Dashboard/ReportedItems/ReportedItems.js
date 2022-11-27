@@ -31,7 +31,7 @@ const ReportedItems = () => {
 
     //loader
     if (isLoading) {
-        return <Loader></Loader>
+        return <div className='h-screen flex items-center justify-center'><Loader></Loader></div>
     }
 
     return (

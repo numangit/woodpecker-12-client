@@ -2,15 +2,20 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
+import Loader from '../../../components/Loader/Loader';
 
 const AllBuyers = () => {
     // const { user } = useContext(AuthContext);
 
     //api to get products by user email
-    const { data: allBuyers = [], refetch } = useQuery({
+    const { data: allBuyers = [], isLoading, refetch } = useQuery({
         queryKey: ['allBuyers'],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/allBuyers");
+            const res = await fetch("http://localhost:5000/allBuyers", {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
+                }
+            });
             const data = await res.json();
             console.log(data)
             return data;
@@ -31,6 +36,10 @@ const AllBuyers = () => {
             })
     }
 
+    //loader
+    if (isLoading) {
+        return <div className='h-screen flex items-center justify-center'><Loader></Loader></div>
+    }
     return (
         <div>
             <div className="overflow-x-auto p-10 mx-auto">

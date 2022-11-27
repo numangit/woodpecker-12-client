@@ -3,11 +3,12 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { MdVerified } from 'react-icons/md';
+import Loader from '../../../components/Loader/Loader';
 
 const AllSellers = () => {
 
     //api to get products by user email
-    const { data: allSellers = [], refetch } = useQuery({
+    const { data: allSellers = [], isLoading, refetch } = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
             const res = await fetch("http://localhost:5000/allSellers");
@@ -50,6 +51,10 @@ const AllSellers = () => {
                     toast.success(`${user.name} deleted successfully`)
                 }
             })
+    }
+    //loader
+    if (isLoading) {
+        return <div className='h-screen flex items-center justify-center'><Loader></Loader></div>
     }
 
     return (
