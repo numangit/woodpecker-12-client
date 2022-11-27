@@ -45,25 +45,25 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {myOrders?.length &&
-                            myOrders?.map((product, i) => <tr key={product?._id}>
+                            myOrders?.map((order, i) => <tr key={order?._id}>
                                 <td className="text-center font-bold">{i + 1}</td>
                                 <td>
                                     <div className="avatar flex items-center justify-center">
                                         <div className="w-12 rounded-md">
-                                            <img src={product.productImage} alt="" />
+                                            <img src={order?.productImage} alt="" />
                                         </div>
                                     </div>
                                 </td>
-                                <td className="font-bold text-sm">{product.productName}</td>
-                                <td className="font-bold text-xs text-center">${product.productPrice}</td>
+                                <td className="font-bold text-sm">{order?.productName}</td>
+                                <td className="font-bold text-xs text-center">${order?.productPrice}</td>
                                 <td>
                                     {
-                                        product?.paid &&
+                                        order?.paid &&
                                         <label htmlFor="confirmation-modal" className="flex items-center justify-center text-green-600 font-semibold text-xs uppercase"><IoMdDoneAll />&nbsp;Paid</label>
                                     }
                                     {
-                                        product?.paid ||
-                                        <Link to={`/dashboard/payment/${product.productId}`} className="btn btn-xs rounded flex items-center font-bold text-xs hover:text-gray-900 hover:bg-white">
+                                        order?.paid ||
+                                        <Link to={`/dashboard/payment/${order?._id}`} className="btn btn-xs rounded flex items-center font-bold text-xs hover:text-gray-900 hover:bg-white">
                                             <div className="flex items-center">
                                                 <FaMoneyCheck /> &nbsp;<p>Pay</p>
                                             </div>
