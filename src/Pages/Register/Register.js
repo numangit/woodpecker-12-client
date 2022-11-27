@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -38,6 +39,7 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         console.log('Profile Updated');
+                        generateJwtToken(data.email);
                         saveUser(data.name, data.email, data.role);
                         navigate(from, { replace: true });
                     })
@@ -58,11 +60,28 @@ const SignUp = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                generateJwtToken(user.email);
                 saveUser(user.displayName, user.email);
                 navigate(from, { replace: true });
                 setLoading(false);
             }).catch((error) => {
                 console.log(error.message);
+            });
+    }
+
+    //post api to generate token
+    const generateJwtToken = (userEmail) => {
+        const currentUser = { email: userEmail }
+        fetch('http://localhost:5000/jwt', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('woodpecker-token', data.token);
             });
     }
 
@@ -140,7 +159,7 @@ const SignUp = () => {
                 <input className='btn btn-accent w-full mt-3' value="Register" type="submit" />
             </form>
             <div className="divider">OR</div>
-            <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+            <button onClick={handleGoogleSignIn} className="btn btn-outline w-full flex items-center"><FcGoogle className='text-start text-lg' />&#160;&#160;CONTINUE WITH GOOGLE</button>
             <p className="text-sm mt-2 text-center">Already have an account? <Link className="underline" to="/login">Login</Link></p>
         </div>
     );

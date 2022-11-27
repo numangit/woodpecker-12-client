@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import toast from 'react-hot-toast';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -58,24 +59,13 @@ const Login = () => {
             });
     }
 
-    // //handle Google Signin
-    // const handleGoogleSignIn = () => {
-    //     googleSignIn()
-    //         .then((result) => {
-    //             const user = result.user;
-    //             console.log(user);
-    //             navigate(from, { replace: true });
-    //             setLoading(false);
-    //         }).catch((error) => {
-    //             console.log(error.message);
-    //         });
-    // }
     //handle Google Signin
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                generateJwtToken(user.email)
                 saveUser(user.displayName, user.email);
                 navigate(from, { replace: true });
                 toast.success('welcome back');
@@ -85,7 +75,7 @@ const Login = () => {
             });
     }
 
-    //pot api to generate token
+    //post api to generate token
     const generateJwtToken = (userEmail) => {
         const currentUser = { email: userEmail }
         fetch('http://localhost:5000/jwt', {
@@ -160,7 +150,7 @@ const Login = () => {
                     <input className='btn btn-accent w-full mt-3' value="Login" type="submit" />
                 </form >
                 <div className="divider">OR</div>
-                <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className="btn btn-outline w-full flex items-center"><FcGoogle className='text-start text-lg' />&#160;&#160;CONTINUE WITH GOOGLE</button>
                 <p className="text-sm mt-3 text-center">Don't have an account? <Link className="underline" to="/register">Create new account</Link></p>
 
                 {/* modal */}
