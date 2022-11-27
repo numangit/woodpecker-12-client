@@ -86,7 +86,8 @@ const CategoryPage = () => {
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 p-5 lg:p-10'>
                 {
                     products?.map(product =>
-                        <div data-aos="fade-up" data-aos-duration="500" key={product._id} className="card lg:card-side bg-base-100 shadow-xl rounded-2xl">
+                        <div data-aos="fade-up" data-aos-duration="500" key={product._id}
+                            className={product?.onStock ? "card lg:card-side bg-base-100 shadow-xl rounded-2xl" : "hidden"}>
                             <figure className='lg:w-3/4'><img className="object-fill" src={product.productImage} alt="Album" /></figure>
                             <div className="card-body lg:p-3">
                                 <h2 className="card-title text-lg">{product.productName}</h2>
