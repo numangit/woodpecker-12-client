@@ -31,11 +31,11 @@ const SignUp = () => {
                 const userInfo = {
                     displayName: data.name
                 }
-                // generateJwtToken(data.email);//(this works without save user)
                 updateUser(userInfo)
                     .then(() => {
                         console.log('Profile Updated');
-                        saveUser(data.name, data.email, data.role);//(PROBLEMMM)
+                        saveUser(data.name, data.email, data.role);
+                        generateJwtToken(data.email);
                         toast.success('Welcome!');
                         navigate(from, { replace: true });
                     })
@@ -57,7 +57,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 saveUser(user.displayName, user.email);
-                // generateJwtToken(user.email); (working)
+                generateJwtToken(user.email);
                 navigate(from, { replace: true });
                 setLoading(false);
             }).catch((error) => {
@@ -66,20 +66,20 @@ const SignUp = () => {
     }
 
     //post api to generate token (working)
-    // const generateJwtToken = (userEmail) => {
-    //     const currentUser = { email: userEmail }
-    //     fetch('http://localhost:5000/jwt', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(currentUser)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             localStorage.setItem('woodpecker-token', data.token);
-    //         });
-    // }
+    const generateJwtToken = (userEmail) => {
+        const currentUser = { email: userEmail }
+        fetch('http://localhost:5000/jwt', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('woodpecker-token', data.token);
+            });
+    }
 
     //add user to database
     const saveUser = (name, email, role = "buyer") => {

@@ -34,7 +34,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // generateJwtToken(user.email)//(working)
+                generateJwtToken(user.email)
                 toast.success('welcome back');
                 navigate(from, { replace: true });
             })
@@ -66,7 +66,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 saveUser(user.displayName, user.email);
-                // generateJwtToken(user.email)//(working)
+                generateJwtToken(user.email)
                 navigate(from, { replace: true });
                 toast.success('welcome back');
                 setLoading(false);
@@ -75,21 +75,21 @@ const Login = () => {
             });
     }
 
-    //post api to generate token (working)
-    // const generateJwtToken = (userEmail) => {
-    //     const currentUser = { email: userEmail }
-    //     fetch('http://localhost:5000/jwt', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(currentUser)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             localStorage.setItem('woodpecker-token', data.token);
-    //         });
-    // }
+    //post api to generate token
+    const generateJwtToken = (userEmail) => {
+        const currentUser = { email: userEmail }
+        fetch('http://localhost:5000/jwt', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('woodpecker-token', data.token);
+            });
+    }
 
     //add user to database
     const saveUser = (name, email, role = "buyer") => {
