@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import AboutUs from '../AboutUs/AboutUs';
 import AdvertiseSection from '../AdvertiseSection/AdvertiseSection';
 import Banner from '../Banner/Banner';
+import OurStory from '../OurStory/OurStory';
 import ProductCategory from '../ProductCategory/ProductCategory';
+import Stats from '../Stats/Stats';
 
 const Home = () => {
 
@@ -16,7 +18,9 @@ const Home = () => {
             <Banner></Banner>
             <ProductCategory></ProductCategory>
             <AdvertiseSection></AdvertiseSection>
+            <Stats></Stats>
             <AboutUs></AboutUs>
+            <OurStory></OurStory>
         </div>
     );
 };

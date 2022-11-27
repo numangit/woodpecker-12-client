@@ -20,12 +20,12 @@ const Navbar = () => {
 
     //Nav links
     const menuItems = <>
-        <li className="text-sm hover:text-blue-400"><Link to="/">Home</Link></li>
-        <li className="text-sm hover:text-blue-400"><Link to="/blogs">Blogs</Link></li>
+        <li className="text-sm hover:text-yellow-400"><Link to="/">Home</Link></li>
+        <li className="text-sm hover:text-yellow-400"><Link to="/blogs">Blogs</Link></li>
         {
             user?.uid ?
                 <>
-                    <li className="text-sm hover:text-blue-400"><Link to="/dashboard">Dashboard</Link></li>
+                    <li className="text-sm hover:text-yellow-400"><Link to="/dashboard">Dashboard</Link></li>
                     <div className="h-auto m-0 p-0 bg-zinc-700 w-[1px]"></div>
                     {
                         user?.photoURL ?
@@ -36,13 +36,13 @@ const Navbar = () => {
                             </div>
                             : <FaUserCircle className="text-xl my-auto mx-2 hidden lg:block" title={user?.displayName} />
                     }
-                    <li className="text-sm hover:text-blue-400"><button className='lg:p-0' onClick={handleLogOut}>Log out</button></li>
+                    <li className="text-sm hover:text-yellow-400"><button className='lg:p-0' onClick={handleLogOut}>Log out</button></li>
                 </>
                 :
                 <>
                     {/* <div className="h-auto m-0 p-0 bg-slate-700 w-[1px]"></div> */}
-                    <li className="text-sm hover:text-blue-400"><Link to="/register">Register</Link></li>
-                    <li className="text-sm hover:text-blue-400"><Link to="/login">Login</Link></li>
+                    <li className="text-sm hover:text-yellow-400"><Link to="/register">Register</Link></li>
+                    <li className="text-sm hover:text-yellow-400"><Link to="/login">Login</Link></li>
                 </>
         }
     </>

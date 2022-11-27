@@ -32,7 +32,7 @@ const ProductCategory = () => {
                 <h1 data-aos="fade-up" data-aos-duration="500" className='text-3xl font-bold text-center '>Product Categories</h1>
                 <p data-aos="fade-right" data-aos-duration="600" className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>Some of our customers say that they trust us and buy our product without any hesitation because they believe us and always happy to buy our product.</p>
             </div>
-            <div className='p-5 lg:p-10 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-6'>
+            <div className='p-5 lg:p-10 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4'>
                 {
                     productCategories?.map(category =>
                         <Link key={category._id} to={`/category/${category._id}`} >

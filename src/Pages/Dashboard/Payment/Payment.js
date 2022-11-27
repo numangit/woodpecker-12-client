@@ -9,14 +9,16 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 const Payment = () => {
     const order = useLoaderData();
     return (
-        <div>
-            <h1>This is payment {order.productName}</h1>
-            <div className='w-96 my-12'>
-                <Elements stripe={stripePromise}>
-                    <CheckoutForm
-                        order={order}
-                    />
-                </Elements>
+        <div className='flex item-center'>
+            <div className='bg-lime-400'>
+                <h1>This is payment {order.productName}</h1>
+                <div >
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm
+                            order={order}
+                        />
+                    </Elements>
+                </div>
             </div>
         </div>
     );
