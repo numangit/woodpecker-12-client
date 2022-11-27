@@ -56,17 +56,46 @@ const Login = () => {
             });
     }
 
+    // //handle Google Signin
+    // const handleGoogleSignIn = () => {
+    //     googleSignIn()
+    //         .then((result) => {
+    //             const user = result.user;
+    //             console.log(user);
+    //             navigate(from, { replace: true });
+    //             setLoading(false);
+    //         }).catch((error) => {
+    //             console.log(error.message);
+    //         });
+    // }
     //handle Google Signin
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                saveUser(user.displayName, user.email);
                 navigate(from, { replace: true });
                 setLoading(false);
             }).catch((error) => {
                 console.log(error.message);
             });
+    }
+
+    //add user to database
+    const saveUser = (name, email, role = "buyer") => {
+        const user = { name, email, role };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
     }
 
     return (
