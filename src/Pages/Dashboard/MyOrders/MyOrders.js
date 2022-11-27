@@ -3,21 +3,31 @@ import React, { useContext } from 'react';
 import { FaMoneyCheck } from 'react-icons/fa';
 import { IoMdDoneAll } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import Loader from '../../../components/Loader/Loader';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
 
     //api to get orders by user email
-    const { data: myOrders = [] } = useQuery({
+    const { data: myOrders, isLoading } = useQuery({
         queryKey: ['myOrders', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myOrders?email=${user?.email}`);
+            const res = await fetch(`http://localhost:5000/myOrders?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
+                }
+            });
             const data = await res.json();
-            console.log(data)
+            // console.log(data)
             return data;
         }
     })
+
+    //loader
+    if (isLoading) {
+        return <div className='flex items-center justify-center'> <Loader></Loader></div>
+    }
 
     return (
         <div>
@@ -45,17 +55,6 @@ const MyOrders = () => {
                                 </td>
                                 <td className="font-bold text-sm">{product.productName}</td>
                                 <td className="font-bold text-xs text-center">${product.productPrice}</td>
-                                {/* <td>
-                                    {
-                                        product?.onStock ||
-                                        <label htmlFor="confirmation-modal" className="flex justify-center text-red-500 font-bold text-xs uppercase">sold</label>
-                                    }
-                                    {
-                                        product?.onStock &&
-                                        <label htmlFor="confirmation-modal" className="flex items-center text-green-600 font-bold text-xs uppercase">Available
-                                        </label>
-                                    }
-                                </td> */}
                                 <td>
                                     {
                                         product?.paid &&

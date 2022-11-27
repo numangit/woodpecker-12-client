@@ -12,7 +12,9 @@ const Navbar = () => {
     //function to handle logout
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                localStorage.removeItem('woodpecker-token');
+            })
             .catch(err => console.log(err));
     }
 

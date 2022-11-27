@@ -22,7 +22,7 @@ const AdvertiseSection = () => {
         <div className='p-6 lg:p-8 bg-[#f2f2f2]'>
             <div className=''>
                 <h1 data-aos="fade-up" data-aos-duration="500" className='text-3xl font-bold text-center'>Checkout Our Product</h1>
-                <p data-aos="fade-left" data-aos-duration="700" className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>Moving to a new space or redecorating? <br className='hidden md:block' /> Extend the life of great design by buying pre-loved and save up to 90% on top furniture brands.</p>
+                <p data-aos="fade-left" data-aos-duration="600" className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>Moving to a new space or redecorating? <br className='hidden md:block' /> Extend the life of great design by buying pre-loved and save up to 90% on top furniture brands.</p>
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-4 gap-10 my-10'>
                 {

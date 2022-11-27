@@ -32,7 +32,9 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
+                generateJwtToken(user.email)
+                toast.success('welcome back');
                 navigate(from, { replace: true });
             })
             .catch(error => {
@@ -76,9 +78,26 @@ const Login = () => {
                 console.log(user);
                 saveUser(user.displayName, user.email);
                 navigate(from, { replace: true });
+                toast.success('welcome back');
                 setLoading(false);
             }).catch((error) => {
                 console.log(error.message);
+            });
+    }
+
+    //pot api to generate token
+    const generateJwtToken = (userEmail) => {
+        const currentUser = { email: userEmail }
+        fetch('http://localhost:5000/jwt', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('woodpecker-token', data.token);
             });
     }
 
