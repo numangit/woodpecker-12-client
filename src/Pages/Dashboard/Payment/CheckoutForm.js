@@ -5,8 +5,6 @@ import toast from 'react-hot-toast';
 const CheckoutForm = ({ order }) => {
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState("");
-    // const [success, setSuccess] = useState('');
-    // const [transactionId, setTransactionId] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
@@ -51,7 +49,6 @@ const CheckoutForm = ({ order }) => {
         else {
             setCardError('');
         }
-        // setSuccess('');
         setIsLoading(true);
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -92,8 +89,6 @@ const CheckoutForm = ({ order }) => {
                 .then(data => {
                     console.log(data);
                     if (data.insertedId) {
-                        // setSuccess('Payment completed!');
-                        // setTransactionId(paymentIntent.id);
                         toast.success("Payment Successful!");
                     }
                 })
