@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -19,12 +20,6 @@ const SignUp = () => {
         window.scrollTo(0, 0)
     }, [])
 
-    //show and hide password
-    const [passwordShown, setPasswordShown] = useState(false);
-    const togglePassword = () => {
-        setPasswordShown(!passwordShown);
-    };
-
     //handler to handle signup function
     const handleSignUp = data => {
         console.log(data)
@@ -36,11 +31,12 @@ const SignUp = () => {
                 const userInfo = {
                     displayName: data.name
                 }
+                // generateJwtToken(data.email);//(this works without save user)
                 updateUser(userInfo)
                     .then(() => {
                         console.log('Profile Updated');
-                        generateJwtToken(data.email);
-                        saveUser(data.name, data.email, data.role);
+                        saveUser(data.name, data.email, data.role);//(PROBLEMMM)
+                        toast.success('Welcome!');
                         navigate(from, { replace: true });
                     })
                     .catch(error => {
@@ -61,7 +57,7 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 saveUser(user.displayName, user.email);
-                generateJwtToken(user.email);
+                // generateJwtToken(user.email); (working)
                 navigate(from, { replace: true });
                 setLoading(false);
             }).catch((error) => {
@@ -69,21 +65,21 @@ const SignUp = () => {
             });
     }
 
-    //post api to generate token
-    const generateJwtToken = (userEmail) => {
-        const currentUser = { email: userEmail }
-        fetch('http://localhost:5000/jwt', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(currentUser)
-        })
-            .then(res => res.json())
-            .then(data => {
-                localStorage.setItem('woodpecker-token', data.token);
-            });
-    }
+    //post api to generate token (working)
+    // const generateJwtToken = (userEmail) => {
+    //     const currentUser = { email: userEmail }
+    //     fetch('http://localhost:5000/jwt', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(currentUser)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             localStorage.setItem('woodpecker-token', data.token);
+    //         });
+    // }
 
     //add user to database
     const saveUser = (name, email, role = "buyer") => {
@@ -100,6 +96,12 @@ const SignUp = () => {
                 console.log(data);
             })
     }
+
+    //show and hide password
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    };
 
     return (
         <div className="shadow-lg p-10 lg:mx-auto w-full lg:w-96 rounded-xl my-5 lg:my-24 border text-dark">

@@ -13,11 +13,12 @@ const MyOrders = () => {
     const { data: myOrders, isLoading } = useQuery({
         queryKey: ['myOrders', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myOrders?email=${user?.email}`, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
-                }
-            });
+            const res = await fetch(`http://localhost:5000/myOrders?email=${user?.email}`);
+            // const res = await fetch(`http://localhost:5000/myOrders?email=${user?.email}`, {
+            //     headers: {
+            //         authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
+            //     }
+            // });
             const data = await res.json();
             // console.log(data)
             return data;
