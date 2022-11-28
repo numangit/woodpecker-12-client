@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaDollarSign } from 'react-icons/fa';
 
 const CheckoutForm = ({ order }) => {
     const [cardError, setCardError] = useState('');
@@ -8,7 +9,7 @@ const CheckoutForm = ({ order }) => {
     const [isLoading, setIsLoading] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
-    const { _id, productId, productPrice, buyerName, buyerEmail } = order;
+    const { _id, productId, productName, productPrice, buyerName, buyerEmail, buyerLocation } = order;
 
     useEffect(() => {
         // api for Payment Intent 
@@ -97,9 +98,42 @@ const CheckoutForm = ({ order }) => {
     }
 
     return (
-        <div>
-            <p className="text-red-500">{cardError}</p>
+        <div className='bg-white mx-auto lg:w-1/2 p-10 rounded-md mt-19' data-aos="fade-down">
             <form onSubmit={handleSubmit}>
+                <h1 className='text-2xl font-semibold mb-1'>Order Summary</h1>
+                <p className='text-xs mb-10'>Need help? Call us at +384-646-4739 or email us.</p>
+                <div className="flex items-center justify-between text-xs lg:text-sm px-3">
+                    <p className='flex items-center '>
+                        Product Name  :
+                    </p>
+                    <div className="font-semibold flex items-center">{productName}</div>
+                </div>
+                <div className="flex items-center justify-between text-xs lg:text-sm px-3 mt-2">
+                    <p className='flex items-center '>
+                        Destination :
+                    </p>
+                    <div className="font-semibold flex items-center">{buyerLocation}</div>
+                </div>
+                <div className="flex items-center justify-between text-xs lg:text-sm px-3 mt-2">
+                    <p className='flex items-center '>
+                        Buyer :
+                    </p>
+                    <div className="font-semibold flex items-center">{buyerName}</div>
+                </div>
+                <div className="flex items-center justify-between text-xs lg:text-sm px-3 mt-2">
+                    <p className=' flex items-center '>
+                        Tax :
+                    </p>
+                    <div className="font-semibold flex items-center"><FaDollarSign />0</div>
+                </div>
+                <div className="flex items-center justify-between text-xs lg:text-sm px-3 mt-2">
+                    <p className=' flex items-center '>
+                        Price :
+                    </p>
+                    <div className="font-semibold flex items-center"><FaDollarSign />{productPrice}</div>
+                </div>
+                <div className='divider'></div>
+
                 <CardElement
                     options={{
                         style: {
@@ -116,9 +150,9 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
+                <p className="text-red-500 text-center text-sm mt-2">{cardError}</p>
                 <button
-                    className='btn btn-sm mt-4 btn-primary'
-                    type="submit"
+                    className='btn rounded-lg mt-5 btn-primary w-full' type="submit"
                     disabled={!stripe || !clientSecret || isLoading}>
                     Pay
                 </button>
