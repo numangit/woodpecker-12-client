@@ -10,7 +10,7 @@ const ProductCategory = () => {
     //getting product categories from api using axios
     useEffect(() => {
         setIsLoading(true)
-        axios.get('http://localhost:5000/productCategories')
+        axios.get('https://woodpecker12-server.vercel.app/productCategories')
             .then((res) => {
                 setProductCategories(res?.data);
                 setIsLoading(false);

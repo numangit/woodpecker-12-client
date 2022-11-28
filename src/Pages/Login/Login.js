@@ -78,7 +78,7 @@ const Login = () => {
     //post api to generate token
     const generateJwtToken = (userEmail) => {
         const currentUser = { email: userEmail }
-        fetch('http://localhost:5000/jwt', {
+        fetch('https://woodpecker12-server.vercel.app/jwt', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -94,7 +94,7 @@ const Login = () => {
     //add user to database
     const saveUser = (name, email, role = "buyer") => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://woodpecker12-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

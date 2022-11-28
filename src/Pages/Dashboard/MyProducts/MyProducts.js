@@ -12,7 +12,7 @@ const MyProducts = () => {
     const { data: myProducts = [], refetch } = useQuery({
         queryKey: ['myProducts', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/myProducts?email=${user?.email}`);
+            const res = await fetch(`https://woodpecker12-server.vercel.app/myProducts?email=${user?.email}`);
             const data = await res.json();
             console.log(data)
             return data;
@@ -21,7 +21,7 @@ const MyProducts = () => {
 
     //function to advertise product
     const handleAdvertise = (id) => {
-        fetch(`http://localhost:5000/product/advertise/${id}`, {
+        fetch(`https://woodpecker12-server.vercel.app/product/advertise/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
@@ -38,7 +38,7 @@ const MyProducts = () => {
 
     //function to delete product
     const handleDeleteProduct = id => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://woodpecker12-server.vercel.app/products/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

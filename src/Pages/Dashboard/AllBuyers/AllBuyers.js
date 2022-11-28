@@ -11,7 +11,7 @@ const AllBuyers = () => {
     const { data: allBuyers = [], isLoading, refetch } = useQuery({
         queryKey: ['allBuyers'],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/allBuyers", {
+            const res = await fetch("https://woodpecker12-server.vercel.app/allBuyers", {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
                 }
@@ -24,7 +24,7 @@ const AllBuyers = () => {
 
     //function to delete Buyer
     const handleDeleteBuyer = user => {
-        fetch(`http://localhost:5000/allBuyers/${user._id}`, {
+        fetch(`https://woodpecker12-server.vercel.app/allBuyers/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

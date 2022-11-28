@@ -42,7 +42,7 @@ const CategoryPage = () => {
         }
         console.log(order);
         // //save data to orders collection
-        fetch('http://localhost:5000/orders', {
+        fetch('https://woodpecker12-server.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -64,7 +64,7 @@ const CategoryPage = () => {
 
     //function to report product
     const handleReport = (id) => {
-        fetch(`http://localhost:5000/product/report/${id}`, {
+        fetch(`https://woodpecker12-server.vercel.app/product/report/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

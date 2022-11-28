@@ -11,7 +11,7 @@ const AllSellers = () => {
     const { data: allSellers = [], isLoading, refetch } = useQuery({
         queryKey: ['allSellers'],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/allSellers");
+            const res = await fetch("https://woodpecker12-server.vercel.app/allSellers");
             const data = await res.json();
             console.log(data)
             return data;
@@ -20,13 +20,13 @@ const AllSellers = () => {
 
     //function to advertise product
     const handleVerify = (user) => {
-        fetch(`http://localhost:5000/users/verify/${user._id}`, {
+        fetch(`https://woodpecker12-server.vercel.app/users/verify/${user._id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
             .then(verifyData => {
                 console.log(verifyData);
-                fetch(`http://localhost:5000/products/sellerVerify/${user.email}`, {
+                fetch(`https://woodpecker12-server.vercel.app/products/sellerVerify/${user.email}`, {
                     method: 'PUT'
                 })
                     .then(res => res.json())
@@ -41,7 +41,7 @@ const AllSellers = () => {
 
     //function to delete Buyer
     const handleDeleteSeller = user => {
-        fetch(`http://localhost:5000/allSellers/${user._id}`, {
+        fetch(`https://woodpecker12-server.vercel.app/allSellers/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

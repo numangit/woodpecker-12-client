@@ -13,8 +13,8 @@ const MyOrders = () => {
     const { data: myOrders, isLoading } = useQuery({
         queryKey: ['myOrders', user?.email],
         queryFn: async () => {
-            // const res = await fetch(`http://localhost:5000/myOrders?email=${user?.email}`);
-            const res = await fetch(`http://localhost:5000/myOrders?email=${user?.email}`, {
+            // const res = await fetch(`https://woodpecker12-server.vercel.app/myOrders?email=${user?.email}`);
+            const res = await fetch(`https://woodpecker12-server.vercel.app/myOrders?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
                 }

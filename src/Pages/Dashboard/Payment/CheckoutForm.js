@@ -13,7 +13,7 @@ const CheckoutForm = ({ order }) => {
 
     useEffect(() => {
         // api for Payment Intent 
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://woodpecker12-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const CheckoutForm = ({ order }) => {
                 productPrice,
                 buyerEmail,
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://woodpecker12-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
