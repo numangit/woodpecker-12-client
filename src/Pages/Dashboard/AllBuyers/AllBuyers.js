@@ -42,7 +42,7 @@ const AllBuyers = () => {
     }
     return (
         <div>
-            <div className="overflow-x-auto p-10 mx-auto">
+            <div className="overflow-x-auto p-5 mx-auto">
                 <table data-aos="fade-down" data-aos-duration="500" className="table w-full">
                     <thead >
                         <tr>
