@@ -21,7 +21,10 @@ const AllSellers = () => {
     //function to advertise product
     const handleVerify = (user) => {
         fetch(`https://woodpecker12-server.vercel.app/users/verify/${user._id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
+            }
         })
             .then(res => res.json())
             .then(verifyData => {
