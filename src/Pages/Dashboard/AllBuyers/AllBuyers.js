@@ -53,7 +53,7 @@ const AllBuyers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
+                        {allBuyers?.length &&
                             allBuyers?.map((buyer, i) => <tr key={buyer._id}>
                                 <td className="text-center font-bold">{i + 1}</td>
                                 <td className="text-center font-bold text-sm">{buyer.name}</td>
