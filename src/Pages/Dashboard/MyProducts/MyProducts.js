@@ -4,7 +4,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { HiSpeakerphone } from 'react-icons/hi';
 import toast from 'react-hot-toast';
-import EmptyData from '../../../components/EmptyData/EmptyData';
+// import EmptyData from '../../../components/EmptyData/EmptyData';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
