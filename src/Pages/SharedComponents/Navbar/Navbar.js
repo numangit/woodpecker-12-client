@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../../assets/icons8-bird-64.png';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import Header from '../Header/Header';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -48,6 +49,7 @@ const Navbar = () => {
 
     return (
         <div data-theme="" className='sticky top-0 z-50 backdrop-blur bg-primary/95 text-white'>
+            <Header/>
             {/* change nav color when scrolling conditional className */}
             <div className="navbar flex justify-between py-0 my-0">
                 <div className="navbar-start">
