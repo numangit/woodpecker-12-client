@@ -1,5 +1,5 @@
 import React from 'react';
-import { AiTwotoneHeart } from 'react-icons/ai';
+import { GiBrain } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -40,7 +40,7 @@ const Footer = () => {
             </div>
             </div>
             <div className='bg-black'>
-            <p className='text-white text-center flex justify-center'> Made with&nbsp;<AiTwotoneHeart className='text-red-600 text-xl'/>&nbsp;by Numan</p>
+            <p className='text-white text-center flex justify-center'> Made with&nbsp;<GiBrain className='text-red-300 text-xl'/>&nbsp;by Numan😁</p>
         </div>
         </footer>
     );
