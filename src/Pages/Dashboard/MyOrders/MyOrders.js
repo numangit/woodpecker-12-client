@@ -32,11 +32,11 @@ const MyOrders = () => {
     return (
         <div>
             <div className="overflow-x-auto p-5 mx-auto">
-                {
+                {/* {
                     myOrders?.length === 0 && <EmptyData />     
                 }
                 {
-                    myOrders?.length > 0 &&
+                    myOrders?.length > 0 && */}
                     <table data-aos="fade-down" data-aos-duration="500" className="table w-full">
                     <thead >
                         <tr>
@@ -79,7 +79,7 @@ const MyOrders = () => {
                         }
                     </tbody>
                 </table >
-                }
+                {/* } */}
                 
             </div >
         </div >
