@@ -163,7 +163,7 @@ const AddAProduct = () => {
                 <div className="grid grid-cols-2 gap-5 my-3" >
                     <div className='block md:flex items-center'>
                         <label className="label"><span className="label-text font-semibold text-xs "> Category: </span></label>
-                        <select {...register("productCategory")} className="select select-sm rounded select-bordered w-4/5 focus:border-none mx-auto">
+                        <select {...register("productCategory")} className="select select-sm rounded select-bordered w-3/4 focus:border-none mx-auto">
                             {
                                 productCategories?.map(category =>
                                     <option
@@ -176,7 +176,7 @@ const AddAProduct = () => {
                     </div>
                     <div className='block md:flex items-center'>
                         <label className="label"><span className="label-text font-semibold text-xs "> Condition : </span></label>
-                        <select {...register("productCondition")} className="select select-sm rounded select-bordered w-4/5 focus:border-none mx-auto">
+                        <select {...register("productCondition")} className="select select-sm rounded select-bordered w-3/4 focus:border-none mx-auto">
                             <option value="Excellent">Excellent</option>
                             <option value="Good">Good</option>
                             <option value="Fair">Fair</option>
