@@ -20,7 +20,7 @@ const AddAProduct = () => {
     const { data: productCategories = [], isLoading } = useQuery({
         queryKey: ['productCategories'],
         queryFn: async () => {
-            const res = await fetch("https://woodpecker12-server.vercel.app/productCategories");
+            const res = await fetch("https://woodpecker12-server-numangit.vercel.app/productCategories");
             const data = await res.json();
             return data;
         }
@@ -31,7 +31,6 @@ const AddAProduct = () => {
 
     //function to handle form submit  
     const handleAddAProduct = data => {
-        console.log(data)
         setLoading(true)
         setFormError('');
         //get image data from form and upload to image bb
@@ -47,7 +46,6 @@ const AddAProduct = () => {
             .then(imgData => {
                 //sending the data from form to end point to save the data in data base
                 if (imgData.success) {
-                    console.log(imgData.data.url);
                     const productDetails = {
                         productImage: imgData.data.url,
                         productName: data.productName,
@@ -65,10 +63,9 @@ const AddAProduct = () => {
                         onStock: true,
                         paid: false,
                         postedDate: new Date()
-                    }
-                    console.log(productDetails);
+                    };
                     // save products information to the database
-                    fetch('https://woodpecker12-server.vercel.app/products', {
+                    fetch('https://woodpecker12-server-numangit.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -78,7 +75,6 @@ const AddAProduct = () => {
                     })
                         .then(res => res.json())
                         .then(result => {
-                            console.log(result);
                             setLoading(false);
                             toast.success("Product added successfully");
                             navigate('/dashboard/myproducts');
@@ -91,7 +87,7 @@ const AddAProduct = () => {
     //show loader on data fetch process
     if (isLoading) {
         return <div className='flex items-center justify-center h-screen'> <Loader></Loader></div>
-    }
+    };
 
     return (
         <div className="shadow-lg p-4 lg:p-8 mx-1 lg:mx-auto w-full lg:w-5/6 rounded-xl my-2 lg:my-5 border text-dark bg-white">

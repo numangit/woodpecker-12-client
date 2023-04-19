@@ -39,41 +39,38 @@ const CategoryPage = () => {
             buyerEmail,
             buyerPhone,
             buyerLocation,
-        }
-        console.log(order);
+        };
         // //save data to orders collection
-        fetch('https://woodpecker12-server.vercel.app/orders', {
+        fetch('https://woodpecker12-server-numangit.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(order)
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.acknowledged) {
-                    toast.success('Order placed successfully');
-                }
-                else {
-                    toast.error(data.message)
-                }
-            })
-    }
-
+        .then(res => res.json())
+        .then(data => {
+            if (data.acknowledged) {
+                toast.success('Order placed successfully');
+            }
+            else {
+                toast.error(data.message)
+            }
+        })
+    };
 
     //function to report product
     const handleReport = (id) => {
-        fetch(`https://woodpecker12-server.vercel.app/product/report/${id}`, {
+        fetch(`https://woodpecker12-server-numangit.vercel.app/products/reported/${id}`, {
             method: 'PUT'
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    toast.success('Product reported')
-                }
-            })
-    }
+        .then(res => res.json())
+        .then(data => {
+            if (data.modifiedCount > 0) {
+                toast.success('Product reported')
+            }
+        })
+    };
 
     return (
         <div className="bg-[#e6e6e6]">

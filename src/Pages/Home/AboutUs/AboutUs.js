@@ -8,7 +8,7 @@ const AboutUs = () => {
                 <div data-aos="fade-right" className='p-3 lg:p-8'>
                     <h1 className="text-5xl font-bold">Furnish forward <br /> and sustain forests</h1>
                     <p className="py-6 text-xl font-thin">We’ll plant a tree through the National Forest Foundation for every order completed on Woodpecker</p>
-                    <button className="btn btn-accent">Get Started</button>
+                    {/* <button className="btn btn-accent">Get Started</button> */}
                 </div>
             </div>
         </div>

@@ -22,18 +22,15 @@ const SignUp = () => {
 
     //handler to handle signup function
     const handleSignUp = data => {
-        console.log(data)
         setRegisterError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        console.log('Profile Updated');
                         saveUser(data.name, data.email, data.role);
                         generateJwtToken(data.email);
                         toast.success('Welcome!');
@@ -50,7 +47,7 @@ const SignUp = () => {
             });
     }
 
-    //handle Google Signin
+    //handle Google SignIn
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then((result) => {
@@ -68,7 +65,7 @@ const SignUp = () => {
     //post api to generate token (working)
     const generateJwtToken = (userEmail) => {
         const currentUser = { email: userEmail }
-        fetch('https://woodpecker12-server.vercel.app/jwt', {
+        fetch('https://woodpecker12-server-numangit.vercel.app/jwt', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -84,7 +81,7 @@ const SignUp = () => {
     //add user to database
     const saveUser = (name, email, role = "buyer") => {
         const user = { name, email, role };
-        fetch('https://woodpecker12-server.vercel.app/users', {
+        fetch('https://woodpecker12-server-numangit.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -5,26 +5,24 @@ import { RiDeleteBin2Fill } from 'react-icons/ri';
 import Loader from '../../../components/Loader/Loader';
 
 const AllBuyers = () => {
-    // const { user } = useContext(AuthContext);
 
     //api to get products by user email
     const { data: allBuyers = [], isLoading, refetch } = useQuery({
         queryKey: ['allBuyers'],
         queryFn: async () => {
-            const res = await fetch("https://woodpecker12-server.vercel.app/allBuyers", {
+            const res = await fetch("https://woodpecker12-server-numangit.vercel.app/users/buyers", {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('woodpecker-token')}`
                 }
             });
             const data = await res.json();
-            console.log(data)
             return data;
         }
-    })
+    });
 
     //function to delete Buyer
     const handleDeleteBuyer = user => {
-        fetch(`https://woodpecker12-server.vercel.app/allBuyers/${user._id}`, {
+        fetch(`https://woodpecker12-server-numangit.vercel.app/users/buyers/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -34,12 +32,13 @@ const AllBuyers = () => {
                     toast.success(`${user.name} deleted successfully`)
                 }
             })
-    }
+    };
 
     //loader
     if (isLoading) {
         return <div className='h-screen flex items-center justify-center'><Loader></Loader></div>
-    }
+    };
+    
     return (
         <div>
             <div className="overflow-x-auto p-5 mx-auto">

@@ -15,11 +15,12 @@ import "swiper/css/navigation";
 import { Pagination } from "swiper";
 
 const AdvertiseSection = () => {
+
     // getting product categories from api
     const { data: advertisedProducts = [], isLoading } = useQuery({
         queryKey: ['advertisedProducts'],
         queryFn: async () => {
-            const res = await fetch("https://woodpecker12-server.vercel.app/advertisedProducts");
+            const res = await fetch("https://woodpecker12-server-numangit.vercel.app/products/advertised");
             const data = await res.json();
             return data;
         }
@@ -28,7 +29,8 @@ const AdvertiseSection = () => {
     //loader
     if (isLoading) {
         return <Loader></Loader>
-    }
+    };
+    
     return (
         <div className='p-6 lg:p-8 bg-[#f2f2f2]'>
             <div className=''>

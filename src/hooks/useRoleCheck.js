@@ -5,7 +5,7 @@ const useRoleCheck = email => {
     const [isRoleLoading, setIsRoleLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`https://woodpecker12-server.vercel.app/users/role/${email}`)
+            fetch(`https://woodpecker12-server-numangit.vercel.app/users/role/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     setRole(data.role);

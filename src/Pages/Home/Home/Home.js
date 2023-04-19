@@ -11,7 +11,7 @@ const Home = () => {
     //scroll at the top after page is rendered
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [])
+    }, []);
 
     return (
         <div>

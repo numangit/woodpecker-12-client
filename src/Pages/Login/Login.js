@@ -28,12 +28,10 @@ const Login = () => {
 
     //form submit function to handle email login
     const handleLogin = data => {
-        console.log(data)
         setLoginError('');
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 generateJwtToken(user.email)
                 toast.success('welcome back');
                 navigate(from, { replace: true });
@@ -44,13 +42,12 @@ const Login = () => {
             });
     }
 
-    //handler function to reset pasword
+    //handler function to reset password
     const handlePasswordReset = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         passwordReset(email)
             .then(() => {
-                console.log('email sent');
                 toast.success('Please Check your email')
             })
             .catch((error) => {
@@ -59,12 +56,11 @@ const Login = () => {
             });
     }
 
-    //handle Google Signin
+    //handle Google SignIn
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
                 saveUser(user.displayName, user.email);
                 generateJwtToken(user.email)
                 navigate(from, { replace: true });
@@ -73,12 +69,12 @@ const Login = () => {
             }).catch((error) => {
                 console.log(error.message);
             });
-    }
+    };
 
     //post api to generate token
     const generateJwtToken = (userEmail) => {
         const currentUser = { email: userEmail }
-        fetch('https://woodpecker12-server.vercel.app/jwt', {
+        fetch('https://woodpecker12-server-numangit.vercel.app/jwt', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -89,12 +85,12 @@ const Login = () => {
             .then(data => {
                 localStorage.setItem('woodpecker-token', data.token);
             });
-    }
+    };
 
     //add user to database
     const saveUser = (name, email, role = "buyer") => {
         const user = { name, email, role };
-        fetch('https://woodpecker12-server.vercel.app/users', {
+        fetch('https://woodpecker12-server-numangit.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -105,7 +101,7 @@ const Login = () => {
             .then(data => {
                 console.log(data);
             })
-    }
+    };
 
     return (
         <div >
@@ -118,7 +114,7 @@ const Login = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label"><span className="">Email :</span></label>
-                        <input {...register("email", { required: "Email Address is required" })} type="email" className="input input-bordered w-full dark:text-slate-900" />
+                        <input {...register("email", { required: "Email Address is required" })} type="email" placeholder='demo: buyer@user.com' className="input input-bordered w-full dark:text-slate-900" />
                         {errors.email && <p className="text-red-500 text-sm" role="alert">{errors.email?.message}</p>}
                     </div>
                     <div className="form-control w-full">
@@ -134,7 +130,9 @@ const Login = () => {
                                     required: "Password is required",
                                     minLength: { value: 6, message: 'Password must be 6 characters or longer' }
                                 })}
-                                type={passwordShown ? "text" : "password"} className="input input-bordered w-full  dark:text-slate-900" />
+                                type={passwordShown ? "text" : "password"} 
+                                placeholder='demo: 123123'
+                                className="input input-bordered w-full  dark:text-slate-900" />
 
                             <div onClick={togglePassword}
                                 className="absolute inset-y-0 right-0 pr-3 flex items-center dark:text-slate-900 ">

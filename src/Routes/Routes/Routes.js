@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoute><CategoryPage></CategoryPage></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://woodpecker12-server.vercel.app/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://woodpecker12-server-numangit.vercel.app/products/${params.id}`)
             },
 
         ]
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <PrivateRoute> <Payment></Payment></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://woodpecker12-server.vercel.app/orders/${params.id}`)
+                loader: ({ params }) => fetch(`https://woodpecker12-server-numangit.vercel.app/orders/${params.id}`)
             }
         ]
     }

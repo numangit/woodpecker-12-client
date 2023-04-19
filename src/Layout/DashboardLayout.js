@@ -6,13 +6,14 @@ import { AiOutlineShopping } from 'react-icons/ai';
 import { MdOutlinePlaylistAdd, MdReportProblem } from 'react-icons/md';
 import { BsFileEarmarkPerson } from 'react-icons/bs';
 import { RiFolderUserFill, RiShoppingBag3Line } from 'react-icons/ri';
+import { GoHome } from 'react-icons/go';
 import { AuthContext } from '../Contexts/AuthProvider';
 import useRoleCheck from '../hooks/useRoleCheck';
 
 const DashboardLayout = () => {
+    
     const { user } = useContext(AuthContext);
     const [role] = useRoleCheck(user?.email);
-
 
     return (
         <div>
@@ -25,6 +26,7 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-72 bg-gray-900 text-white">
+                    <li className="text-sm hover:translate-x-2 duration-300 lg:hidden"><Link to="/"><GoHome/> Home</Link></li>
                         {
                             role === "buyer" &&
                             <li className='text-sm hover:translate-x-2 duration-300'><Link to="/dashboard/myorders"><AiOutlineShopping /> My Orders</Link></li>

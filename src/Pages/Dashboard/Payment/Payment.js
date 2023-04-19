@@ -10,14 +10,9 @@ const Payment = () => {
     const order = useLoaderData();
     return (
         <div className=' p-3 lg:p-8'>
-            {/* <h1>This is payment {order.productName}</h1> */}
-
             <Elements stripe={stripePromise}>
-                <CheckoutForm
-                    order={order}
-                />
+                <CheckoutForm order={order}/>
             </Elements>
-
         </div>
     );
 };

@@ -9,7 +9,7 @@ const ReportedItems = () => {
     const { data: reportedProducts = [], isLoading, refetch } = useQuery({
         queryKey: ['reportedProducts'],
         queryFn: async () => {
-            const res = await fetch("https://woodpecker12-server.vercel.app/products/reported");
+            const res = await fetch("https://woodpecker12-server-numangit.vercel.app/products/reported");
             const data = await res.json();
             return data;
         }
@@ -17,7 +17,7 @@ const ReportedItems = () => {
 
     //function to delete product
     const handleDeleteProduct = id => {
-        fetch(`https://woodpecker12-server.vercel.app/products/${id}`, {
+        fetch(`https://woodpecker12-server-numangit.vercel.app/products/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -27,12 +27,12 @@ const ReportedItems = () => {
                     toast.success("Product deleted successfully")
                 }
             })
-    }
+    };
 
     //loader
     if (isLoading) {
         return <div className='h-screen flex items-center justify-center'><Loader></Loader></div>
-    }
+    };
 
     return (
         <div>

@@ -13,7 +13,7 @@ const CheckoutForm = ({ order }) => {
 
     useEffect(() => {
         // api for Payment Intent 
-        fetch("https://woodpecker12-server.vercel.app/create-payment-intent", {
+        fetch("https://woodpecker12-server-numangit.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -44,7 +44,6 @@ const CheckoutForm = ({ order }) => {
         });
 
         if (error) {
-            console.log(error);
             setCardError(error.message);
         }
         else {
@@ -70,7 +69,6 @@ const CheckoutForm = ({ order }) => {
         }
         //when payment is successful
         if (paymentIntent.status === "succeeded") {
-            console.log('card info', card);
             // store payment info in the database
             const payment = {
                 transactionId: paymentIntent.id,
@@ -79,7 +77,7 @@ const CheckoutForm = ({ order }) => {
                 productPrice,
                 buyerEmail,
             }
-            fetch('https://woodpecker12-server.vercel.app/payments', {
+            fetch('https://woodpecker12-server-numangit.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -88,14 +86,13 @@ const CheckoutForm = ({ order }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.insertedId) {
                         toast.success("Payment Successful!");
                     }
                 })
         }
         setIsLoading(false);
-    }
+    };
 
     return (
         <div className='bg-white mx-auto lg:w-1/2 p-10 rounded-md mt-19' data-aos="fade-down">
