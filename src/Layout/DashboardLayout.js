@@ -16,11 +16,11 @@ const DashboardLayout = () => {
     const [role] = useRoleCheck(user?.email);
 
     return (
-        <div>
+        <div className="bg-slate-900">
             <Navbar></Navbar>
             <div className="drawer drawer-mobile ">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content bg-[#e6e6e6]">
+                <div className="drawer-content bg-slate-900">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side">

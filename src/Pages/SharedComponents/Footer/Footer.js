@@ -1,10 +1,11 @@
 import React from 'react';
+import { AiTwotoneHeart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-
 
 const Footer = () => {
     return (
-        <footer data-theme="" className="footer p-10 bg-primary text-white">
+        <footer>
+            <div className="footer p-10 bg-primary text-white">
             <div>
                 <span className="footer-title">Services</span>
                 <Link to='/' className="link link-hover">Branding</Link>
@@ -37,6 +38,10 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+            </div>
+            <div className='bg-black'>
+            <p className='text-white text-center flex justify-center'> Made with&nbsp;<AiTwotoneHeart className='text-red-600 text-xl'/>&nbsp;by Numan</p>
+        </div>
         </footer>
     );
 };

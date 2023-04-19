@@ -5,10 +5,12 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Header from '../Header/Header';
+import { useScrollDirection } from '../../../hooks/useScrollDirection';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const location = useLocation();
+    const scrollDirection = useScrollDirection();
 
     //function to handle logout
     const handleLogOut = () => {
@@ -48,7 +50,8 @@ const Navbar = () => {
     </>
 
     return (
-        <div data-theme="" className='sticky top-0 z-50 backdrop-blur bg-primary/95 text-white'>
+        <div className={`w-full transition duration-500 sticky z-[1000] bg-primary text-white ${scrollDirection ? ' translate-y-[-100px] ' : 'top-0 translate-y-0  '
+         }`} >
             <Header/>
             {/* change nav color when scrolling conditional className */}
             <div className="navbar flex justify-between py-0 my-0">
