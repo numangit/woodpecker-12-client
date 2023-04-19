@@ -5,11 +5,11 @@ import Navbar from '../Pages/SharedComponents/Navbar/Navbar';
 
 const Main = () => {
     return (
-        <div>
+        <>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>
-        </div>
+        </>
     );
 };
 
