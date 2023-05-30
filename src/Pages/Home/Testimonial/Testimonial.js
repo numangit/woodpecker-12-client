@@ -1,4 +1,4 @@
-import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
+import { FaQuoteLeft } from 'react-icons/fa';
 
 const Testimonial = () => {
   return (
