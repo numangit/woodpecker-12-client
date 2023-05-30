@@ -2,8 +2,8 @@ import { FaQuoteLeft } from 'react-icons/fa';
 
 const Testimonial = () => {
   return (
-    <section className="mx-2 md:mx-0 p-8 bg-fixed bg-cover text-white" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1512747646639-ed824d861e0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80")` }}>
-      <div className="container mx-auto flex flex-col items-center pb-6 mb-4 md:p-10 md:px-12">
+    <section className="p-8 bg-fixed bg-cover text-white" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1512747646639-ed824d861e0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80")` }}>
+      <div className="mx-2 md:mx-0 container flex flex-col items-center pb-6 mb-4 md:p-10 md:px-12">
         <h1 className="text-3xl font-semibold leading-none text-center">What our customers are saying about us</h1>
       </div>
       <div className="container mx-auto grid grid-cols-1 gap-8 lg:gap-20 md:px-10 md:pb-10 lg:grid-cols-2">
