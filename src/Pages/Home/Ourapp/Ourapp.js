@@ -10,10 +10,10 @@ const Ourapp = () => {
             <div>
               <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider uppercase bg-teal-accent-400 text-teal-900 rounded-full">Brand new</p>
             </div>
-            <h2 className="font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none max-w-lg mb-6">
+            <h2 data-aos="fade-up" className="font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none max-w-lg mb-6">
               Download Now
             </h2>
-            <p className="text-gray-700 text-base md:text-lg">Our app is now available on google play and apply store.</p>
+            <p data-aos="fade-right" className="text-gray-700 text-base md:text-lg">Our app is now available on google play and apply store.</p>
           </div>
           <div className="flex items-center space-x-3">
             <a href="/" className="w-32 transition duration-300 hover:shadow-lg">
