@@ -17,10 +17,10 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <AboutUs></AboutUs>
             <ProductCategory></ProductCategory>
             <AdvertiseSection></AdvertiseSection>
             <Stats></Stats>
-            <AboutUs></AboutUs>
             <Ourapp></Ourapp>
             <OurStory></OurStory>
         </div>
