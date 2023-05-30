@@ -6,6 +6,7 @@ import OurStory from '../OurStory/OurStory';
 import ProductCategory from '../ProductCategory/ProductCategory';
 import Stats from '../Stats/Stats';
 import Ourapp from '../Ourapp/Ourapp';
+import Offers from '../Offers/Offers';
 
 const Home = () => {
 
@@ -19,6 +20,7 @@ const Home = () => {
             <Banner></Banner>
             <AboutUs></AboutUs>
             <ProductCategory></ProductCategory>
+            <Offers></Offers>
             <AdvertiseSection></AdvertiseSection>
             <Stats></Stats>
             <Ourapp></Ourapp>
