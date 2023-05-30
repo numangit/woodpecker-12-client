@@ -18,10 +18,10 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <AboutUs></AboutUs>
             <ProductCategory></ProductCategory>
-            <Offers></Offers>
             <AdvertiseSection></AdvertiseSection>
+            <Offers></Offers>
+            <AboutUs></AboutUs>
             <Stats></Stats>
             <Ourapp></Ourapp>
             <OurStory></OurStory>

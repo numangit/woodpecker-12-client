@@ -27,7 +27,7 @@ const ProductCategory = () => {
     }
 
     return (
-        <div className="lg:py-10 py-4 bg-fixed bg-cover text-white" style={{ backgroundImage: `url("https://i.pinimg.com/originals/b9/1e/f6/b91ef686bde789f0b4540468c07e5a0b.jpg")` }}>
+        <div id="catagories" className="lg:py-10 py-4 bg-fixed bg-cover text-white" style={{ backgroundImage: `url("https://i.pinimg.com/originals/b9/1e/f6/b91ef686bde789f0b4540468c07e5a0b.jpg")` }}>
             <div className='p-4 md:p-0:'>
                 <h1 data-aos="fade-up" data-aos-duration="500" className='text-3xl font-bold text-center '>Product Categories</h1>
                 <p data-aos="fade-right" data-aos-duration="600" className='mx-auto text-center font-thin mt-4 my-1 max-w-2xl'>Some of our customers say that they trust us and buy our product without any hesitation because they believe us and always happy to buy our product.</p>
