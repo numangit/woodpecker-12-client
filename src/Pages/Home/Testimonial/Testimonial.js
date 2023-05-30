@@ -7,7 +7,7 @@ const Testimonial = () => {
         <h1 className="text-3xl font-semibold leading-none text-center">What our customers are saying about us</h1>
       </div>
       <div className="container mx-auto grid grid-cols-1 gap-8 lg:gap-20 md:px-10 md:pb-10 lg:grid-cols-2">
-        <div className="flex flex-col items-center mx-12 lg:mx-0">
+        <div className="flex flex-col items-center mx-5 lg:mx-0">
           <div className="relative text-center">
             <FaQuoteLeft />
             <p className="px-6 py-1 text-lg italic">I was so disappointed with my new coffee table. It arrived damaged, and the customer service was terrible. I would not recommend this company to anyone.</p>
@@ -15,7 +15,7 @@ const Testimonial = () => {
           <span className="w-12 h-1 my-2 rounded-lg dark:bg-violet-400"></span>
           <p>Leroy Canon</p>
         </div>
-        <div className="flex flex-col items-center max-w-lg mx-12 lg:mx-0">
+        <div className="flex flex-col items-center max-w-lg mx-5 lg:mx-0">
           <div className="relative text-center">
             <FaQuoteLeft />
             <p className="px-6 py-1 text-lg italic">I love my new sofa! It's so comfortable and stylish, and it arrived in perfect condition. I would definitely recommend this company to anyone looking for new furniture.</p>
