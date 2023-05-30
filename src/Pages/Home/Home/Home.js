@@ -7,6 +7,7 @@ import ProductCategory from '../ProductCategory/ProductCategory';
 import Stats from '../Stats/Stats';
 import Ourapp from '../Ourapp/Ourapp';
 import Offers from '../Offers/Offers';
+import Testimonial from '../Testimonial/Testimonial';
 
 const Home = () => {
 
@@ -23,8 +24,9 @@ const Home = () => {
             <Offers></Offers>
             <AboutUs></AboutUs>
             <Stats></Stats>
-            <Ourapp></Ourapp>
+            <Testimonial></Testimonial>
             <OurStory></OurStory>
+            <Ourapp></Ourapp>
         </div>
     );
 };
