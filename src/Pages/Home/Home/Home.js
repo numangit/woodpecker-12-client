@@ -21,8 +21,8 @@ const Home = () => {
             <AdvertiseSection></AdvertiseSection>
             <Stats></Stats>
             <AboutUs></AboutUs>
-            <OurStory></OurStory>
             <Ourapp></Ourapp>
+            <OurStory></OurStory>
         </div>
     );
 };
