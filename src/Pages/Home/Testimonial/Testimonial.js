@@ -10,7 +10,7 @@ const Testimonial = () => {
         <div className="flex flex-col items-center mx-5 lg:mx-0">
           <div className="relative text-center">
             <FaQuoteLeft />
-            <p className="px-6 py-1 text-lg italic">I was so disappointed with my new coffee table. It arrived damaged, and the customer service was terrible. I would not recommend this company to anyone.</p>
+            <p className="px-6 py-1 text-lg italic">This table is amazing! It's so comfortable and stylish, and it fits perfectly in my living room. I would highly recommend buying from here.</p>
           </div>
           <span className="w-12 h-1 my-2 rounded-lg dark:bg-violet-400"></span>
           <p>Leroy Canon</p>
