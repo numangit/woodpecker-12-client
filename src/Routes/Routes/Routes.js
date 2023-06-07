@@ -1,4 +1,4 @@
-import {lazy, Suspense} from 'react';
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Blogs from "../../Pages/Blogs/Blogs";
@@ -20,19 +20,19 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import Preloader from '../../components/Preloader/Preloading';
 
-const LazyLoad = lazy(()=>import("../../Layout/Main"));
+const LazyLoad = lazy(() => import("../../Layout/Main"));
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: (
-            <Suspense fallback={<Preloader/>}><LazyLoad/></Suspense>
-            ),
+            <Suspense fallback={<Preloader />}><LazyLoad /></Suspense>
+        ),
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: '/blogs',
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <PrivateRoute><CategoryPage></CategoryPage></PrivateRoute>,
+                element: <CategoryPage></CategoryPage>,
                 loader: ({ params }) => fetch(`https://woodpecker12-server-numangit.vercel.app/products/${params.id}`)
             },
 
