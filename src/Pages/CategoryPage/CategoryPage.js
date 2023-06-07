@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { MdLocationOn, MdVerified, MdDateRange } from 'react-icons/md';
 import { BiTime } from 'react-icons/bi';
 import { BsFillInfoCircleFill } from 'react-icons/bs';
@@ -12,6 +12,8 @@ const CategoryPage = () => {
     const { user: currentUser } = useContext(AuthContext);
     const [selectedProduct, setSelectedProduct] = useState([]);
     const products = useLoaderData();
+
+    const navigate = useNavigate();
 
     //scroll at the top after page is rendered
     useEffect(() => {
@@ -48,15 +50,15 @@ const CategoryPage = () => {
             },
             body: JSON.stringify(order)
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.acknowledged) {
-                toast.success('Order placed successfully');
-            }
-            else {
-                toast.error(data.message)
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Order placed successfully');
+                }
+                else {
+                    toast.error(data.message)
+                }
+            })
     };
 
     //function to report product
@@ -64,12 +66,21 @@ const CategoryPage = () => {
         fetch(`https://woodpecker12-server-numangit.vercel.app/products/reported/${id}`, {
             method: 'PUT'
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.modifiedCount > 0) {
-                toast.success('Product reported')
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Product reported')
+                }
+            })
+    };
+
+    //function place order and open modal
+    const handlePlaceOrder = (product) => {
+        if (!currentUser?.uid) {
+            navigate('/login')
+        } else {
+            setSelectedProduct(product)
+        };
     };
 
     return (
@@ -125,7 +136,7 @@ const CategoryPage = () => {
                                     <label
                                         htmlFor="order-modal"
                                         className="btn btn-sm btn-primary rounded-md w-full"
-                                        onClick={() => setSelectedProduct(product)}>
+                                        onClick={() => handlePlaceOrder(product)}>
                                         PLACE ORDER
                                     </label>
                                 </div>

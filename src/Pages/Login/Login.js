@@ -130,7 +130,7 @@ const Login = () => {
                                     required: "Password is required",
                                     minLength: { value: 6, message: 'Password must be 6 characters or longer' }
                                 })}
-                                type={passwordShown ? "text" : "password"} 
+                                type={passwordShown ? "text" : "password"}
                                 placeholder='demo: 123123'
                                 className="input input-bordered w-full  dark:text-slate-900" />
 
